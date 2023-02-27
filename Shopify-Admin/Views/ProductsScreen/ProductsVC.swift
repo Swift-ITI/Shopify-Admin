@@ -46,5 +46,9 @@ extension ProductsVC:UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productDetails = self.storyboard?.instantiateViewController(withIdentifier: "productDetailsVC") as! ProductDetailsVC
+        self.navigationController?.pushViewController(productDetails, animated: true)
+    }
     
 }

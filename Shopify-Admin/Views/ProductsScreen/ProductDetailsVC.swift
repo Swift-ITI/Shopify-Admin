@@ -7,8 +7,13 @@
 
 import UIKit
 
-class ProductDetailsVC: UIViewController {
+class ProductDetailsVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var priceTxtField: UITextField!
+    @IBOutlet weak var descriptionTxtView: UITextView!
+    @IBOutlet weak var nameTxtField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,4 +31,20 @@ class ProductDetailsVC: UIViewController {
     }
     */
 
+    @IBAction func imageUplod(_ sender: Any) {
+//        let imgPicker = UIImagePickerController()
+//        imgPicker.delegate = self
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+//            imgPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+//            self.present(imgPicker, animated: true)
+//        }
+        
+    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        productImage.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+//        print(productImage!)
+//        dismiss(animated: true)
+//    }
+    
 }
+
