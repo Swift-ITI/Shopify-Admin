@@ -31,13 +31,19 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         cell.productImage.image = UIImage(named: "Shoe")
         cell.nameLabel.text = "Adidasssssssssssssssssssssss"
         cell.typeLabel.text = "tshirts"
-        cell.quantityBtn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
+        //cell.quantityBtn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
         
         cell.skuLabel.text = "SKU:4785961161619826231841"
         return cell
     }
     @objc func goToDetails(_ sender: Any){
+       
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailedObj : InventoryDetails = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! InventoryDetails
+        detailedObj.navigationController?.pushViewController(detailedObj, animated: true)
     }
 }
 
