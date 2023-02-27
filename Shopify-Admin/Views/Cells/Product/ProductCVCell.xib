@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="gTV-IL-0wX" customClass="ProductCVCell" customModule="Shopify_Admin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="116"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="116"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" id="j3t-eA-DSy">
+                        <rect key="frame" x="8" y="8" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="j3t-eA-DSy" secondAttribute="height" multiplier="1:1" id="Q3k-a4-8pG"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nameeeeeeeeeeeeeeeeeeee" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOC-Rk-Sc0">
+                        <rect key="frame" x="116" y="15.999999999999996" width="176" height="40.666666666666657"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" name="AccentColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 available | Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYk-uu-69b">
+                        <rect key="frame" x="115.99999999999999" y="79" width="146.66666666666663" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" name="AccentColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlX-Ac-PBl">
+                        <rect key="frame" x="292" y="8" width="50" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="IlX-Ac-PBl" secondAttribute="height" multiplier="1:2" id="Uud-PV-h2c"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="">
+                            <imageReference key="image" image="pencil" catalog="system" symbolScale="large"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                            <color key="baseForegroundColor" name="SecondaryColor"/>
+                        </buttonConfiguration>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="j3t-eA-DSy" secondAttribute="bottom" constant="8" id="7ab-en-Ekm"/>
+                <constraint firstAttribute="trailing" secondItem="IlX-Ac-PBl" secondAttribute="trailing" constant="8" id="Iw0-Fi-Xnk"/>
+                <constraint firstAttribute="bottom" secondItem="IlX-Ac-PBl" secondAttribute="bottom" constant="8" id="L6v-2w-LBm"/>
+                <constraint firstAttribute="bottom" secondItem="gYk-uu-69b" secondAttribute="bottom" constant="16" id="MEr-Rd-G1q"/>
+                <constraint firstItem="IlX-Ac-PBl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="O9i-xX-j46"/>
+                <constraint firstItem="j3t-eA-DSy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="W3W-vy-dxw"/>
+                <constraint firstItem="j3t-eA-DSy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="WyU-P9-Uac"/>
+                <constraint firstItem="gYk-uu-69b" firstAttribute="leading" secondItem="j3t-eA-DSy" secondAttribute="trailing" constant="8" id="ae7-ad-8To"/>
+                <constraint firstItem="KOC-Rk-Sc0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="dtW-fE-lZA"/>
+                <constraint firstItem="IlX-Ac-PBl" firstAttribute="leading" secondItem="KOC-Rk-Sc0" secondAttribute="trailing" id="eL8-nX-vcf"/>
+                <constraint firstItem="KOC-Rk-Sc0" firstAttribute="leading" secondItem="j3t-eA-DSy" secondAttribute="trailing" constant="8" id="mYI-pX-zaF"/>
+            </constraints>
+            <size key="customSize" width="350" height="116"/>
+            <connections>
+                <outlet property="availabilityLabel" destination="gYk-uu-69b" id="S6L-Tu-azN"/>
+                <outlet property="editBtn" destination="IlX-Ac-PBl" id="6SI-ac-xh3"/>
+                <outlet property="nameLabel" destination="KOC-Rk-Sc0" id="kWV-SC-iCu"/>
+                <outlet property="productImage" destination="j3t-eA-DSy" id="4NK-nV-ejz"/>
+            </connections>
+            <point key="canvasLocation" x="271.75572519083971" y="26.760563380281692"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.23529411764705882" green="0.36078431372549019" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryColor">
+            <color red="0.68627450980392157" green="0.55686274509803924" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

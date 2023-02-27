@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9m2-P8-S6l">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="58a-Ac-s9N">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9m2-P8-S6l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iCa-a5-iJR">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <color key="tintColor" name="SecondaryColor"/>
+                        <color key="barTintColor" name="SecondaryColor"/>
+                        <color key="selectedImageTintColor" name="SecondaryColor"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <color key="shadowColor" name="AccentColor"/>
+                            <color key="selectionIndicatorTintColor" name="SecondaryColor"/>
+                        </tabBarAppearance>
+                        <tabBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <color key="shadowColor" name="AccentColor"/>
+                            <color key="selectionIndicatorTintColor" name="SecondaryColor"/>
+                        </tabBarAppearance>
+                    </tabBar>
+                    <connections>
+                        <segue destination="R9d-D3-5XT" kind="relationship" relationship="viewControllers" id="iup-ij-1fU"/>
+                        <segue destination="MQs-lL-Lqs" kind="relationship" relationship="viewControllers" id="qBP-81-y0g"/>
+                        <segue destination="JRx-Hf-piv" kind="relationship" relationship="viewControllers" id="rRy-9i-5KU"/>
+                        <segue destination="jOJ-i3-cPc" kind="relationship" relationship="viewControllers" id="biC-dg-nGo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ba-Ui-rV9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="43.511450381679388" y="-34.507042253521128"/>
+        </scene>
+        <!--HomeSB-->
+        <scene sceneID="50z-uh-NK6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HomeSB" id="R9d-D3-5XT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Dfu-Bg-uEu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tb2-M9-EXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="786" y="-303"/>
+        </scene>
+        <!--ProductsSB-->
+        <scene sceneID="NEk-T2-LHX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductsSB" id="MQs-lL-Lqs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="F7Y-9q-kI6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eg6-8x-wFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="-126"/>
+        </scene>
+        <!--CouponsSB-->
+        <scene sceneID="QD8-SK-W7u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CouponsSB" id="JRx-Hf-piv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="1rg-tR-WEK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1f-ov-6qZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="83"/>
+        </scene>
+        <!--StoreSB-->
+        <scene sceneID="Yly-E2-DLf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreSB" id="jOJ-i3-cPc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="QZI-8O-V0L"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PTF-Ev-EIC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="256"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" name="AccentColor"/>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.23529411764705882" green="0.36078431372549019" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryColor">
+            <color red="0.68627450980392157" green="0.55686274509803924" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

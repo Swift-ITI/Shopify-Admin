@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L0I-gr-Xwb">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Products-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ProductsVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-vy-dI0">
+                                <rect key="frame" x="16.000000000000007" y="167" width="116.66666666666669" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-is-FXO">
+                                <rect key="frame" x="0.0" y="103" width="342" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="AAZ-aV-1rp"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2f-RM-7st">
+                                <rect key="frame" x="342" y="103" width="51" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="n2f-RM-7st" secondAttribute="height" multiplier="1:1" id="Azp-3a-Z7a"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease" catalog="system">
+                                    <color key="baseForegroundColor" name="SecondaryColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="De0-Gi-6gm">
+                                <rect key="frame" x="8" y="213" width="377" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qSh-qb-hFL">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n2f-RM-7st" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0ZE-0S-OrP"/>
+                            <constraint firstItem="ccJ-vy-dI0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="8GE-Gg-ce9"/>
+                            <constraint firstAttribute="bottom" secondItem="De0-Gi-6gm" secondAttribute="bottom" id="BGR-hr-b2E"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n2f-RM-7st" secondAttribute="trailing" id="C11-Pi-HwS"/>
+                            <constraint firstItem="De0-Gi-6gm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="DhX-b7-utA"/>
+                            <constraint firstItem="ccJ-vy-dI0" firstAttribute="top" secondItem="O9a-is-FXO" secondAttribute="bottom" constant="8" id="FvD-4x-MQx"/>
+                            <constraint firstItem="O9a-is-FXO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Sf5-4F-cQl"/>
+                            <constraint firstItem="O9a-is-FXO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cZA-JQ-9Re"/>
+                            <constraint firstItem="De0-Gi-6gm" firstAttribute="top" secondItem="ccJ-vy-dI0" secondAttribute="bottom" constant="8" id="eqt-G8-h77"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="De0-Gi-6gm" secondAttribute="trailing" constant="8" id="h2l-0w-0aF"/>
+                            <constraint firstItem="n2f-RM-7st" firstAttribute="leading" secondItem="O9a-is-FXO" secondAttribute="trailing" id="naW-fy-Fha"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Products" id="u1l-f6-gcX"/>
+                    <connections>
+                        <outlet property="productsCV" destination="De0-Gi-6gm" id="nBP-P1-oZt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="970.2290076335878" y="-34.507042253521128"/>
+        </scene>
+        <!--Product DetailsVC-->
+        <scene sceneID="U40-Kk-wFE">
+            <objects>
+                <viewController id="nkS-KV-VgB" customClass="ProductDetailsVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mis-El-sDl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iiv-VJ-Amp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bbr-EL-TOn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1805" y="-35"/>
+        </scene>
+        <!--Products-->
+        <scene sceneID="MpS-Uk-t9m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L0I-gr-Xwb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Products" image="tag.fill" catalog="system" id="H8H-iS-bvz"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWb-hR-xsb">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <color key="tintColor" name="SecondaryColor"/>
+                        <color key="barTintColor" name="SecondaryColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="SecondaryColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="SecondaryColor"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <color key="shadowColor" name="AccentColor"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" name="SecondaryColor"/>
+                                <color key="textShadowColor" name="SecondaryColor"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <color key="shadowColor" name="AccentColor"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" name="SecondaryColor"/>
+                                <color key="textShadowColor" name="SecondaryColor"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="KaO-mX-ubI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmY-FF-qtV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="43.511450381679388" y="-34.507042253521128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
+        <image name="tag.fill" catalog="system" width="128" height="118"/>
+        <namedColor name="AccentColor">
+            <color red="0.23529411764705882" green="0.36078431372549019" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryColor">
+            <color red="0.68627450980392157" green="0.55686274509803924" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
