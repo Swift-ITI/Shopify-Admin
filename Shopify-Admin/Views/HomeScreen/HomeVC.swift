@@ -4,46 +4,61 @@
 //
 //  Created by Adham Samer on 27/02/2023.
 //
-
+import Kingfisher
 import UIKit
 
 class HomeVC: UIViewController {
 
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
-            renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
+            //renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
+            inventoryCV.delegate = self
+            inventoryCV.dataSource = self
+            let nib = UINib(nibName: "InventoryCVCell", bundle: nil)
+            inventoryCV.register(nib, forCellWithReuseIdentifier: "inventoryCell")
         }
     }
-
+    var viewModel = ViewModel()
+    var products:[Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.startAnimating()
+        viewModel.fetchData(target: .allProducts)
+        viewModel.bindProductsToInventoryVC = { () in
+            self.renderProducts()
+            indicator.stopAnimating()
+        }
         
     }
 }
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return products.count
     }
-
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cellInit(CV: inventoryCV, cellID: "inventoryCell", index: indexPath) as! InventoryCVCell
-        cell.productImage.image = UIImage(named: "Shoe")
-        cell.nameLabel.text = "Adidasssssssssssssssssssssss"
-        cell.typeLabel.text = "tshirts"
-        //cell.quantityBtn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-        
-        cell.skuLabel.text = "SKU:4785961161619826231841"
+        let tmp = products[indexPath.row]
+        cell.productImage.kf.setImage(with: URL(string: tmp.image?.src ?? ""))
+        cell.nameLabel.text = tmp.title
+        cell.typeLabel.text = tmp.product_type
+        cell.qtnLabel.text = tmp.variants?.first?.inventory_quantity.formatted()
+        cell.skuLabel.text = "SKU: \(tmp.variants?.first?.sku ?? "")"
+        //cell.qtnLabel.text = String(describing: tmp.variants?[indexPath.row].inventory_quantity)
+        //cell.skuLabel.text = "SKU: \(tmp.variants?[indexPath.row].sku ?? "")"
         return cell
     }
-    @objc func goToDetails(_ sender: Any){
-       
-        
-    }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailedObj : InventoryDetails = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! InventoryDetails
-        detailedObj.navigationController?.pushViewController(detailedObj, animated: true)
+        let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! InventoryDetails
+        self.navigationController?.pushViewController(invDetail, animated: true)
     }
 }
 
@@ -60,5 +75,10 @@ extension HomeVC {
         return cell
     }
     
-    
+    func renderProducts(){
+        DispatchQueue.main.async {
+            self.products = self.viewModel.products.products
+            self.inventoryCV.reloadData()
+        }
+    }
 }
