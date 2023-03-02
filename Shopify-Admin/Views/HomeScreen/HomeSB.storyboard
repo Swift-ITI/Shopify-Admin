@@ -17,12 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-jD-8L9">
-                                <rect key="frame" x="0.0" y="103" width="326" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-5I-0W1">
-                                <rect key="frame" x="326" y="103" width="51" height="51"/>
+                                <rect key="frame" x="342" y="103" width="51" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BDY-5I-0W1" secondAttribute="height" multiplier="1:1" id="n0C-rs-mIh"/>
                                 </constraints>
@@ -32,7 +28,7 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtC-T8-30r">
-                                <rect key="frame" x="16" y="167" width="101" height="32"/>
+                                <rect key="frame" x="16" y="163" width="101" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +36,7 @@
                                 <size key="shadowOffset" width="1" height="2"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kay-J1-jYb">
-                                <rect key="frame" x="16" y="203" width="361" height="566"/>
+                                <rect key="frame" x="16" y="199" width="361" height="570"/>
                                 <color key="backgroundColor" red="0.27675887182871178" green="0.42844871672274915" blue="0.5" alpha="0.099385040485306289" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T7u-a8-ad6">
                                     <size key="itemSize" width="128" height="128"/>
@@ -50,27 +46,34 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4Vf-GL-xa4">
+                                <rect key="frame" x="0.0" y="103" width="342" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="8sC-Ey-CUM"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PQR-jD-8L9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="4jd-JY-2eC"/>
-                            <constraint firstItem="PQR-jD-8L9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6xz-EX-Ac8"/>
                             <constraint firstItem="BDY-5I-0W1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="EBP-1E-zBt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kay-J1-jYb" secondAttribute="trailing" constant="16" id="FEz-uJ-dYx"/>
-                            <constraint firstItem="BDY-5I-0W1" firstAttribute="leading" secondItem="PQR-jD-8L9" secondAttribute="trailing" id="I9O-5c-VXb"/>
                             <constraint firstItem="kay-J1-jYb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="WWW-kY-FWH"/>
-                            <constraint firstItem="QtC-T8-30r" firstAttribute="top" secondItem="PQR-jD-8L9" secondAttribute="bottom" constant="8" id="Yka-FI-lET"/>
                             <constraint firstItem="QtC-T8-30r" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="bHJ-6z-Mlh"/>
                             <constraint firstItem="kay-J1-jYb" firstAttribute="top" secondItem="QtC-T8-30r" secondAttribute="bottom" constant="4" id="bmv-Dg-6Ig"/>
+                            <constraint firstItem="4Vf-GL-xa4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dho-0x-GVj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kay-J1-jYb" secondAttribute="bottom" id="ejM-R4-dHy"/>
-                            <constraint firstItem="BDY-5I-0W1" firstAttribute="leading" secondItem="PQR-jD-8L9" secondAttribute="trailing" id="lpQ-ju-F9W"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BDY-5I-0W1" secondAttribute="trailing" constant="16" id="vkc-ZU-QY5"/>
+                            <constraint firstItem="QtC-T8-30r" firstAttribute="top" secondItem="4Vf-GL-xa4" secondAttribute="bottom" constant="4" id="f1u-1f-1vD"/>
+                            <constraint firstItem="4Vf-GL-xa4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="kpP-TO-NPx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BDY-5I-0W1" secondAttribute="trailing" id="vkc-ZU-QY5"/>
+                            <constraint firstItem="BDY-5I-0W1" firstAttribute="leading" secondItem="4Vf-GL-xa4" secondAttribute="trailing" id="x34-Fk-1FT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="J3D-Un-fvm"/>
                     <connections>
                         <outlet property="inventoryCV" destination="kay-J1-jYb" id="GcZ-uD-Zuy"/>
+                        <outlet property="searchBar" destination="4Vf-GL-xa4" id="oeg-Ng-JP9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

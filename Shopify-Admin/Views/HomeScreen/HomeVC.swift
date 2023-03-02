@@ -9,17 +9,19 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
-            //renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
-            inventoryCV.delegate = self
-            inventoryCV.dataSource = self
-            let nib = UINib(nibName: "InventoryCVCell", bundle: nil)
-            inventoryCV.register(nib, forCellWithReuseIdentifier: "inventoryCell")
+            renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
+//            inventoryCV.delegate = self
+//            inventoryCV.dataSource = self
+//            let nib = UINib(nibName: "InventoryCVCell", bundle: nil)
+//            inventoryCV.register(nib, forCellWithReuseIdentifier: "inventoryCell")
         }
     }
     var viewModel = ViewModel()
-    var products:[Product] = []
+    var products:[Product]?
+    var searchProducts:[Product]?
     override func viewDidLoad() {
         super.viewDidLoad()
         let indicator = UIActivityIndicatorView(style: .large)
@@ -31,27 +33,26 @@ class HomeVC: UIViewController {
             self.renderProducts()
             indicator.stopAnimating()
         }
-        
+        inventoryCV.reloadData()
     }
 }
 
+// MARK: Collection View
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return products?.count ?? 0
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cellInit(CV: inventoryCV, cellID: "inventoryCell", index: indexPath) as! InventoryCVCell
-        let tmp = products[indexPath.row]
-        cell.productImage.kf.setImage(with: URL(string: tmp.image?.src ?? ""))
-        cell.nameLabel.text = tmp.title
-        cell.typeLabel.text = tmp.product_type
-        cell.qtnLabel.text = tmp.variants?.first?.inventory_quantity.formatted()
-        cell.skuLabel.text = "SKU: \(tmp.variants?.first?.sku ?? "")"
-        //cell.qtnLabel.text = String(describing: tmp.variants?[indexPath.row].inventory_quantity)
-        //cell.skuLabel.text = "SKU: \(tmp.variants?[indexPath.row].sku ?? "")"
+        let tmp = products?[indexPath.row]
+        cell.productImage.kf.setImage(with: URL(string: tmp?.image?.src ?? ""))
+        cell.nameLabel.text = tmp?.title
+        cell.typeLabel.text = tmp?.product_type
+        cell.qtnLabel.text = tmp?.variants?.first?.inventory_quantity.formatted()
+        cell.skuLabel.text = "SKU: \(tmp?.variants?.first?.sku ?? "")"
         return cell
     }
     
@@ -62,6 +63,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
 }
 
+
+// MARK: Rendering
 extension HomeVC {
     func renderCVs(CV: UICollectionView, cellFile: String, cellID: String) {
         CV.delegate = self
@@ -78,7 +81,24 @@ extension HomeVC {
     func renderProducts(){
         DispatchQueue.main.async {
             self.products = self.viewModel.products.products
+            self.searchProducts = self.viewModel.products.products
             self.inventoryCV.reloadData()
         }
+    }
+}
+
+
+extension HomeVC :UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        products = []
+        if searchText == ""{
+            products = searchProducts
+        }
+        for product in searchProducts ?? [] {
+            if product.title.lowercased().contains(searchText.lowercased()){
+                products?.append(product)
+            }
+        }
+        self.inventoryCV.reloadData()
     }
 }
