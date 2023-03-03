@@ -9,6 +9,7 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
@@ -35,6 +36,12 @@ class HomeVC: UIViewController {
         }
         inventoryCV.reloadData()
     }
+    
+    @IBAction func addNewProduct(_ sender: Any) {
+        let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
+        invDetail.flag = 1
+        self.navigationController?.pushViewController(invDetail, animated: true)
+    }
 }
 
 // MARK: Collection View
@@ -59,7 +66,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
-      //  invDetail.product = products?[indexPath.row]
+        invDetail.flag = 2
+        invDetail.product = products?[indexPath.row]
         self.navigationController?.pushViewController(invDetail, animated: true)
     }
 }
