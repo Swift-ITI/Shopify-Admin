@@ -17,26 +17,24 @@ class InventoryDetails: UIViewController {
             sku.layer.cornerRadius = 10
         }
     }
-    @IBOutlet weak var onHand: UILabel!
-    @IBOutlet weak var commited: UILabel!
+    @IBOutlet weak var productName: UILabel!
+    
+    @IBOutlet weak var quantityTxtField: UITextField!
     @IBOutlet weak var available: UILabel!
     @IBOutlet weak var steepper: UIStepper!
     @IBOutlet weak var quantatiy: UILabel!
-    @IBOutlet weak var quantatiyViewDetal: UIView! {
-        didSet {
-            quantatiyViewDetal.layer.borderWidth = 2
-            quantatiyViewDetal.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
-            quantatiyViewDetal.layer.cornerRadius = 10
-        }
-    }
+    var product:Product?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        productName.text = product?.title
+        sku.text = product?.variants?.first?.sku
+        steepper.value = Double(product?.variants?.first?.inventory_quantity ?? 0)
+        available.text = product?.variants?.first?.inventory_quantity.formatted()
+        quantatiy.text = String(Int(steepper.value))
         // Do any additional setup after loading the view.
     }
     
     @IBAction func stepper(_ sender: Any) {
         quantatiy.text = String(Int(steepper.value))
-        
     }
 }

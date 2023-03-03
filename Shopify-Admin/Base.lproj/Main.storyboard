@@ -117,7 +117,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="R9d-D3-5XT" kind="relationship" relationship="viewControllers" id="iup-ij-1fU"/>
-                        <segue destination="MQs-lL-Lqs" kind="relationship" relationship="viewControllers" id="qBP-81-y0g"/>
                         <segue destination="JRx-Hf-piv" kind="relationship" relationship="viewControllers" id="rRy-9i-5KU"/>
                         <segue destination="jOJ-i3-cPc" kind="relationship" relationship="viewControllers" id="biC-dg-nGo"/>
                     </connections>
@@ -135,16 +134,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tb2-M9-EXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1711.4503816793892" y="-303.52112676056339"/>
-        </scene>
-        <!--ProductsSB-->
-        <scene sceneID="NEk-T2-LHX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ProductsSB" id="MQs-lL-Lqs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="F7Y-9q-kI6"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eg6-8x-wFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1728.2442748091603" y="-126.05633802816902"/>
         </scene>
         <!--CouponsSB-->
         <scene sceneID="QD8-SK-W7u">

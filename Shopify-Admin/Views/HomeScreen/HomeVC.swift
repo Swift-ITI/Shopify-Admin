@@ -59,6 +59,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! InventoryDetails
+        invDetail.product = products?[indexPath.row]
         self.navigationController?.pushViewController(invDetail, animated: true)
     }
 }
