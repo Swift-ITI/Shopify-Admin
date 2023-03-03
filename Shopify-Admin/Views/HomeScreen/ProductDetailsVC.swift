@@ -7,23 +7,22 @@
 
 import UIKit
 
-class InventoryDetails: UIViewController {
-
-    
-    @IBOutlet weak var sku: UITextField! {
+class ProductDetailsVC: UIViewController {
+    @IBOutlet var sku: UITextField! {
         didSet {
             sku.layer.borderWidth = 2
             sku.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
             sku.layer.cornerRadius = 10
         }
     }
-    @IBOutlet weak var productName: UILabel!
+
+    @IBOutlet var productName: UILabel!
+    @IBOutlet var quantityTxtField: UITextField!
+    @IBOutlet var available: UILabel!
+    @IBOutlet var steepper: UIStepper!
+    @IBOutlet var quantatiy: UILabel!
+    var product: Product?
     
-    @IBOutlet weak var quantityTxtField: UITextField!
-    @IBOutlet weak var available: UILabel!
-    @IBOutlet weak var steepper: UIStepper!
-    @IBOutlet weak var quantatiy: UILabel!
-    var product:Product?
     override func viewDidLoad() {
         super.viewDidLoad()
         productName.text = product?.title
@@ -33,7 +32,7 @@ class InventoryDetails: UIViewController {
         quantatiy.text = String(Int(steepper.value))
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func stepper(_ sender: Any) {
         quantatiy.text = String(Int(steepper.value))
     }

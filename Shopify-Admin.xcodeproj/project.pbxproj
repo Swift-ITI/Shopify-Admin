@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DAF95A329AC8861002B34D3 /* InventoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF95A229AC8861002B34D3 /* InventoryDetails.swift */; };
+		3DAF95A329AC8861002B34D3 /* ProductDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF95A229AC8861002B34D3 /* ProductDetailsVC.swift */; };
 		4DF27A5AF26F7F259F908D5D /* Pods_Shopify_AdminTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4936CA249C160B96DBD1B6BA /* Pods_Shopify_AdminTests.framework */; };
 		67F59D557FB4BB25565FA166 /* Pods_Shopify_Admin_Shopify_AdminUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4BFE27C9DE273A4BF636D3 /* Pods_Shopify_Admin_Shopify_AdminUITests.framework */; };
 		C554F7241BFFF50DE19426F6 /* Pods_Shopify_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF47D43D36A2BBE6BDC5BDD /* Pods_Shopify_Admin.framework */; };
@@ -59,7 +59,7 @@
 /* Begin PBXFileReference section */
 		192A8E5E62F842364818CC96 /* Pods-Shopify-Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Admin.release.xcconfig"; path = "Target Support Files/Pods-Shopify-Admin/Pods-Shopify-Admin.release.xcconfig"; sourceTree = "<group>"; };
 		3C4BFE27C9DE273A4BF636D3 /* Pods_Shopify_Admin_Shopify_AdminUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_Admin_Shopify_AdminUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DAF95A229AC8861002B34D3 /* InventoryDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryDetails.swift; sourceTree = "<group>"; };
+		3DAF95A229AC8861002B34D3 /* ProductDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVC.swift; sourceTree = "<group>"; };
 		4936CA249C160B96DBD1B6BA /* Pods_Shopify_AdminTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_AdminTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF47D43D36A2BBE6BDC5BDD /* Pods_Shopify_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE18E5D49688CC24CC6A352 /* Pods-Shopify-Admin-Shopify-AdminUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Admin-Shopify-AdminUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-Admin-Shopify-AdminUITests/Pods-Shopify-Admin-Shopify-AdminUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 			children = (
 				DECA31C129AC10FE00E27CB2 /* HomeVC.swift */,
 				DECA322829AC17A900E27CB2 /* HomeSB.storyboard */,
-				3DAF95A229AC8861002B34D3 /* InventoryDetails.swift */,
+				3DAF95A229AC8861002B34D3 /* ProductDetailsVC.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -596,7 +596,7 @@
 			files = (
 				DECA320F29AC156600E27CB2 /* CouponsVC.swift in Sources */,
 				DEA9CD7829B06E3A00672E37 /* LoginVC.swift in Sources */,
-				3DAF95A329AC8861002B34D3 /* InventoryDetails.swift in Sources */,
+				3DAF95A329AC8861002B34D3 /* ProductDetailsVC.swift in Sources */,
 				DECA322129AC16E600E27CB2 /* CustomersCVCell.swift in Sources */,
 				DEA9CD7C29B0858300672E37 /* EndPoints.swift in Sources */,
 				DECA31FD29AC14C500E27CB2 /* ViewModel.swift in Sources */,
