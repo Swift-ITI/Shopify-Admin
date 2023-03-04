@@ -54,4 +54,8 @@ class DiscountCodesViewModel {
         
         NetworkServices.postMethod(url: target.path, parameters: parameter)
     }
+    
+    func deleteCode(target: EndPoints) {
+        NetworkServices.delete(url: target.path)
+    }
 }
