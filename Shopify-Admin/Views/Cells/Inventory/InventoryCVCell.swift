@@ -9,7 +9,7 @@ import UIKit
 
 class InventoryCVCell: UICollectionViewCell {
 
-    @IBOutlet weak var quantityBtn: UIButton!
+    @IBOutlet weak var qtnLabel: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var skuLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
