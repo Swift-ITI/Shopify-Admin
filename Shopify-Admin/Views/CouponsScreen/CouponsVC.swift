@@ -27,6 +27,7 @@ var priceRuleViewModel : PriceRuleViewModel?
 var priceRule : PriceRuleResult?
 var discountCodeViewModel : DiscountCodesViewModel?
 var discountCodes : DiscountCodes?
+    var arrayCount : Int?
 
     
 
@@ -46,6 +47,7 @@ override func viewDidLoad() {
             self.priceRuleTargetType.text = self.priceRule?.price_rules.first?.target_type
            
             self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
+            self.arrayCount = self.discountCodes?.discount_codes.count ?? 0
         }
     }
     //id = 1380100899094
@@ -75,6 +77,7 @@ override func viewDidLoad() {
         //discountCodes?.discount_codes
         discountCodeViewModel?.postData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
         
+        discountCodes?.discount_codes[arrayCount ?? 0].code = newCouponCode.text ?? ""
         self.discountCodesTableView.reloadData()
         
     }
