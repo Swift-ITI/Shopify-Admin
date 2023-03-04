@@ -147,8 +147,9 @@ class ProductDetailsVC: UIViewController {
     @IBAction func saveProduct(_ sender: Any) {
         switch flag {
         case 1://post to API
-            
+         break
         case 2://update to API
+            break
         default: break
         }
     }
