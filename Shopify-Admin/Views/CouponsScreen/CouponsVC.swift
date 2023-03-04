@@ -26,7 +26,7 @@ class CouponsVC: UIViewController {
     var priceRule: PriceRuleResult?
     var discountCodeViewModel: DiscountCodesViewModel?
     var discountCodes: DiscountCodes?
-    var arrayCount: Int?
+    var arrOfDiscountCodes : [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,6 @@ class CouponsVC: UIViewController {
                 self.priceRuleTargetType.text = self.priceRule?.price_rules.first?.target_type
 
                 self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
-                self.arrayCount = self.discountCodes?.discount_codes.count ?? 0
             }
         }
         // id = 1380100899094
@@ -52,6 +51,10 @@ class CouponsVC: UIViewController {
         discountCodeViewModel?.bindDiscountCodesToCouponsVC = { () in
             DispatchQueue.main.async {
                 self.discountCodes = self.discountCodeViewModel?.discountCodes
+                
+                for code in self.discountCodes!.discount_codes {
+                    self.arrOfDiscountCodes.append(code.code)
+                }
                 self.discountCodesTableView.reloadData()
             }
         }
@@ -71,7 +74,7 @@ class CouponsVC: UIViewController {
             // discountCodes?.discount_codes
             discountCodeViewModel?.postData(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
 
-            discountCodes?.discount_codes[arrayCount ?? 0].code = newCouponCode.text ?? ""
+            arrOfDiscountCodes.append(newCouponCode.text ?? "")
             discountCodesTableView.reloadData()
         }
 
@@ -126,13 +129,14 @@ extension CouponsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return discountCodes?.discount_codes.count ?? 0
+        return arrOfDiscountCodes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CouponCV = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponCV
-        cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
-        cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
+        cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
+        //cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
+       // cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
 
         return cell
     }
