@@ -11,6 +11,7 @@ import Kingfisher
 class ProductDetailsVC: UIViewController {
     
     var product: Product?
+    var productVM: ViewModel?
     var flag: Int?
     var producImgs: [String] = []
     var productSizes: [String] = []
@@ -59,6 +60,7 @@ class ProductDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        productVM = ViewModel()
         product?.images?.forEach({ img in
             self.producImgs.append(img.src)
         })
@@ -113,7 +115,7 @@ class ProductDetailsVC: UIViewController {
             ProductImagesTableView.reloadData()
             
         }else {
-            showAlert()
+            showAlert(title: "Failed", msg: "Add Img")
         }
     }
     @IBAction func addProductSize(_ sender: Any) {
@@ -122,7 +124,7 @@ class ProductDetailsVC: UIViewController {
             productSizeTableView.reloadData()
             
         }else {
-            showAlert()
+            showAlert(title: "Failed", msg: "Add Size")
         }
     }
     @IBAction func addProductColor(_ sender: Any) {
@@ -131,7 +133,7 @@ class ProductDetailsVC: UIViewController {
             productColorTableView.reloadData()
             
         }else {
-            showAlert()
+            showAlert(title: "Failed", msg: "Add Color")
         }
     }
     
@@ -154,9 +156,31 @@ class ProductDetailsVC: UIViewController {
         }
     }
     @IBAction func deleteProduct(_ sender: Any) {
+        switch flag {
+            case 1:
+                showAlert(title: "Failed", msg: "Can't delete")
+            case 2:
+                let alert = UIAlertController(title: "Delete Product", message: "Are u sure to delete product?", preferredStyle: UIAlertController.Style.alert)
+
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                    self.productVM?.deleteProduct(target: .deleteProductByID(productID: self.product?.id ?? 0))
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                }))
+                present(alert, animated: true, completion: nil)
+                
+            case .none:
+                print("Noe")
+            case .some(_):
+                print("Yes")
+        }
+       
     }
-    func showAlert() {
-        let alert = UIAlertController(title: "incomplete data", message: "Enter full data", preferredStyle: UIAlertController.Style.alert)
+    func showAlert(title:String,msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 

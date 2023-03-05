@@ -19,6 +19,9 @@ class ViewModel {
             self.products = result
         }
     }
+    func deleteProduct(target: EndPoints) {
+        NetworkServices.delete(url: target.path)
+    }
 }
 
 class PriceRuleViewModel {
