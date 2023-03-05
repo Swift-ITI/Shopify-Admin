@@ -18,6 +18,7 @@ enum EndPoints {
     case priceRule
     case discountCodes (id : String)
     case deleteCodeByID (ruleID:Int,codeID:Int)
+    case customers
     var path : String {
         switch self{
         case .allProducts:
@@ -37,6 +38,8 @@ enum EndPoints {
                 
             case .deleteCodeByID(ruleID: let ruleID, codeID: let codeID):
                 return "\(BaseUrl)/price_rules/\(ruleID)/discount_codes/\(codeID).json"
+        case .customers :
+            return "\(BaseUrl)/customers.json"
         }
     }
     

@@ -59,3 +59,18 @@ class DiscountCodesViewModel {
         NetworkServices.delete(url: target.path)
     }
 }
+
+class CustomerViewModel {
+    var bindcustomersToCustomersVC: ( ()->() ) = {}
+    var customers:Customers! {
+        didSet{
+            bindcustomersToCustomersVC()
+        }
+       
+    }
+    func fetchData(target : EndPoints) {
+        NetworkServices.fetch(url: target.path) { result in
+            self.customers = result
+        }
+    }
+}

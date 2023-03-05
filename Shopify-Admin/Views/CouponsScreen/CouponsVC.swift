@@ -28,6 +28,7 @@ class CouponsVC: UIViewController {
     var discountCodes: DiscountCodes?
     var arrOfDiscountCodes : [String] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

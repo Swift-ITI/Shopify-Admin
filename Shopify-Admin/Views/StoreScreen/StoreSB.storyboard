@@ -86,6 +86,67 @@
             </objects>
             <point key="canvasLocation" x="970.2290076335878" y="-34.507042253521128"/>
         </scene>
+        <!--CustomersVC-->
+        <scene sceneID="nxi-4E-nII">
+            <objects>
+                <viewController storyboardIdentifier="customers" id="a1l-GR-lHw" customClass="CustomersVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HHp-g1-Vub">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MpL-sM-tfV">
+                                <rect key="frame" x="16" y="182" width="361" height="614"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="jpz-Rc-7Sl">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jpz-Rc-7Sl" id="OS8-ap-3L6">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a1l-GR-lHw" id="Gou-Uj-bfC"/>
+                                    <outlet property="delegate" destination="a1l-GR-lHw" id="9kA-Fv-bmB"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total number of customers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-2H-EEO">
+                                <rect key="frame" x="69.666666666666686" y="99" width="254" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBp-Wn-eba">
+                                <rect key="frame" x="196.66666666666666" y="142" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="29L-f8-oHt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MpL-sM-tfV" firstAttribute="leading" secondItem="29L-f8-oHt" secondAttribute="leading" constant="16" id="FNr-9Y-C2v"/>
+                            <constraint firstItem="uBp-Wn-eba" firstAttribute="top" secondItem="aGv-2H-EEO" secondAttribute="bottom" constant="16" id="Gsm-6t-0v1"/>
+                            <constraint firstItem="uBp-Wn-eba" firstAttribute="centerX" secondItem="HHp-g1-Vub" secondAttribute="centerX" id="UHi-q9-hKK"/>
+                            <constraint firstItem="MpL-sM-tfV" firstAttribute="top" secondItem="uBp-Wn-eba" secondAttribute="bottom" constant="40" id="aXW-4l-7qk"/>
+                            <constraint firstItem="29L-f8-oHt" firstAttribute="bottom" secondItem="MpL-sM-tfV" secondAttribute="bottom" constant="22" id="fB8-ZQ-Eje"/>
+                            <constraint firstItem="29L-f8-oHt" firstAttribute="trailing" secondItem="MpL-sM-tfV" secondAttribute="trailing" constant="16" id="lif-B1-viw"/>
+                            <constraint firstItem="aGv-2H-EEO" firstAttribute="centerX" secondItem="HHp-g1-Vub" secondAttribute="centerX" id="q4z-ZN-XyY"/>
+                            <constraint firstItem="aGv-2H-EEO" firstAttribute="top" secondItem="29L-f8-oHt" secondAttribute="top" constant="40" id="uLK-fe-9h4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="customernumbers" destination="uBp-Wn-eba" id="dZG-3O-73L"/>
+                        <outlet property="customersTableView" destination="MpL-sM-tfV" id="ikY-Ep-FeA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHm-Qt-Pza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1695.4198473282443" y="-25.35211267605634"/>
+        </scene>
         <!--Store-->
         <scene sceneID="HaD-Mb-nKm">
             <objects>
