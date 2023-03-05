@@ -22,6 +22,9 @@ class ViewModel {
     func deleteProduct(target: EndPoints) {
         NetworkServices.delete(url: target.path)
     }
+    func postProduct(target: EndPoints, parameters : [String : Any]) {
+        NetworkServices.postMethod(url: target.path, parameters: parameters)
+    }
 }
 
 class PriceRuleViewModel {
@@ -37,6 +40,8 @@ class PriceRuleViewModel {
             self.priceRule = result
         }
     }
+    
+   
 }
 
 class DiscountCodesViewModel {
@@ -53,7 +58,7 @@ class DiscountCodesViewModel {
         }
     }
     
-    func postData(target : EndPoints , parameter : [String : Any]) {
+    func postCoupon(target : EndPoints , parameter : [String : Any]) {
         
         NetworkServices.postMethod(url: target.path, parameters: parameter)
     }

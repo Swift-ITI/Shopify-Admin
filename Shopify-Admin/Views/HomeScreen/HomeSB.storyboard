@@ -353,8 +353,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="146" translatesAutoresizingMaskIntoConstraints="NO" id="QSl-mh-0aL">
-                                <rect key="frame" x="17" y="1011" width="354" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="QSl-mh-0aL">
+                                <rect key="frame" x="17" y="1011" width="361" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-vG-LZU">
                                         <rect key="frame" x="0.0" y="0.0" width="73" height="31"/>
@@ -365,10 +365,11 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wxu-r5-nFf">
-                                        <rect key="frame" x="219" y="0.0" width="135" height="32"/>
+                                        <rect key="frame" x="143" y="0.0" width="218" height="32"/>
                                         <segments>
-                                            <segment title="Active"/>
-                                            <segment title="Inactive"/>
+                                            <segment title="active"/>
+                                            <segment title="archived"/>
+                                            <segment title="draft"/>
                                         </segments>
                                     </segmentedControl>
                                 </subviews>
@@ -743,7 +744,7 @@
                                             <constraint firstAttribute="height" constant="128" id="bGw-uJ-TNw"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="146" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-tO-pwc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-tO-pwc">
                                         <rect key="frame" x="16" y="1040.3333333333333" width="361" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgV-8F-AKc">
@@ -755,10 +756,11 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ubb-kV-Jaa">
-                                                <rect key="frame" x="208.33333333333337" y="0.0" width="152.66666666666663" height="32"/>
+                                                <rect key="frame" x="122.33333333333336" y="0.0" width="238.66666666666663" height="32"/>
                                                 <segments>
-                                                    <segment title="Active"/>
-                                                    <segment title="Inactive"/>
+                                                    <segment title="active"/>
+                                                    <segment title="archived"/>
+                                                    <segment title="draft"/>
                                                 </segments>
                                                 <connections>
                                                     <action selector="addProductStatus:" destination="hM2-6v-jCO" eventType="valueChanged" id="bBh-ow-AkI"/>
@@ -997,8 +999,6 @@
                                     <constraint firstItem="HPM-P0-mfF" firstAttribute="width" secondItem="hXD-xR-ms2" secondAttribute="width" multiplier="0.918575" id="FEc-Od-abc"/>
                                     <constraint firstItem="jE5-Uy-ixh" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="FOo-X4-Yuh"/>
                                     <constraint firstAttribute="trailing" secondItem="Hu3-83-Dd0" secondAttribute="trailing" constant="16" id="Fso-3c-Kb9"/>
-                                    <constraint firstAttribute="trailing" secondItem="mlp-tO-pwc" secondAttribute="trailing" constant="16" id="IoK-P3-XEp"/>
-                                    <constraint firstItem="mlp-tO-pwc" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="JMT-w4-am6"/>
                                     <constraint firstItem="7OS-Ue-uc0" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="LMM-RF-NE9"/>
                                     <constraint firstAttribute="trailing" secondItem="4uP-eA-zH6" secondAttribute="trailing" constant="16" id="N89-To-O2v"/>
                                     <constraint firstItem="OMz-F1-5IL" firstAttribute="top" secondItem="YeW-qp-P1t" secondAttribute="bottom" constant="8" id="P3c-aP-3Fq"/>
@@ -1016,11 +1016,13 @@
                                     <constraint firstItem="HwU-pc-r0J" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="Zgr-R8-Pab"/>
                                     <constraint firstItem="Rfv-Lf-2LH" firstAttribute="top" secondItem="jE5-Uy-ixh" secondAttribute="bottom" constant="8" id="a9O-8N-rDZ"/>
                                     <constraint firstItem="6AI-b3-GBj" firstAttribute="top" secondItem="4uP-eA-zH6" secondAttribute="bottom" constant="8" symbolic="YES" id="bzi-zy-ie3"/>
+                                    <constraint firstAttribute="trailing" secondItem="mlp-tO-pwc" secondAttribute="trailing" constant="16" id="dAx-wv-0tv"/>
                                     <constraint firstItem="nrp-1h-nGh" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="eaO-3R-s6h"/>
                                     <constraint firstItem="OMz-F1-5IL" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="f8V-R3-nU2"/>
                                     <constraint firstItem="4uP-eA-zH6" firstAttribute="top" secondItem="Rfv-Lf-2LH" secondAttribute="bottom" constant="8" id="fbG-Rv-zM5"/>
                                     <constraint firstAttribute="trailing" secondItem="GAG-Ra-3fS" secondAttribute="trailing" constant="16" id="fdU-Ha-H49"/>
                                     <constraint firstAttribute="trailing" secondItem="7OS-Ue-uc0" secondAttribute="trailing" constant="16" id="g2D-fM-15S"/>
+                                    <constraint firstItem="mlp-tO-pwc" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="g3A-4x-o5Z"/>
                                     <constraint firstItem="dOR-HX-v5X" firstAttribute="width" secondItem="hXD-xR-ms2" secondAttribute="width" multiplier="0.918575" id="hF7-0R-w5Z"/>
                                     <constraint firstItem="7OS-Ue-uc0" firstAttribute="top" secondItem="klC-sq-HeU" secondAttribute="bottom" constant="16" id="igv-Mk-axe"/>
                                     <constraint firstAttribute="bottom" secondItem="8WS-tV-FTJ" secondAttribute="bottom" constant="46" id="j6F-cA-qKO"/>

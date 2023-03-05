@@ -71,7 +71,7 @@ class CouponsVC: UIViewController {
                         ],
                 ]
             // discountCodes?.discount_codes
-            discountCodeViewModel?.postData(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
+            discountCodeViewModel?.postCoupon(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
 
             //discountCodes?.discount_codes.append(<#T##Element#>)
             discountCodesTableView.reloadData()
