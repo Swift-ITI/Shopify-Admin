@@ -15,6 +15,10 @@ enum EndPoints {
     case shoes (id : String) //"SHOES"
     case accessories (id : String) //"ACCESSORIES"
     case tshirts (id : String) //"T-SHIRTS"
+    case priceRule
+    case discountCodes (id : String)
+    case deleteCodeByID (ruleID:Int,codeID:Int)
+    case customers
     var path : String {
         switch self{
         case .allProducts:
@@ -27,6 +31,15 @@ enum EndPoints {
             return "\(BaseUrl)/products.json?collection_id=\(id)&product_type=ACCESSORIES"
         case .tshirts (id : let id):
             return "\(BaseUrl)/products.json?collection_id=\(id)&product_type=T-SHIRTS"
+        case .priceRule:
+            return "\(BaseUrl)/price_rules.json"
+        case .discountCodes (id : let id):
+            return "\(BaseUrl)/price_rules/\(id)/discount_codes.json"
+                
+            case .deleteCodeByID(ruleID: let ruleID, codeID: let codeID):
+                return "\(BaseUrl)/price_rules/\(ruleID)/discount_codes/\(codeID).json"
+        case .customers :
+            return "\(BaseUrl)/customers.json"
         }
     }
     

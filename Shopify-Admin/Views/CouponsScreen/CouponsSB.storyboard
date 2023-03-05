@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4ut-SY-3Rg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -12,14 +12,142 @@
         <!--Coupons-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CouponsCV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="coupons" id="Y6W-OH-hqX" customClass="CouponsVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Rule ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-TT-39N">
+                                <rect key="frame" x="16" y="75" width="111" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBn-QI-Ze3">
+                                <rect key="frame" x="221" y="115" width="42" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcF-zM-a8W">
+                                <rect key="frame" x="16" y="195" width="99" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-kS-hSh">
+                                <rect key="frame" x="16" y="251" width="148" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Discount codes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeB-Iw-wdD">
+                                <rect key="frame" x="16" y="349" width="195" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qki-5C-5PH">
+                                <rect key="frame" x="16" y="115" width="47" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="all customers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJu-f6-IdW">
+                                <rect key="frame" x="176" y="155" width="117" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="available for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7z-tf-ofj">
+                                <rect key="frame" x="16" y="155" width="105" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1380100899094" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54O-xl-nqU">
+                                <rect key="frame" x="172" y="75" width="151" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="line item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFj-WA-a5P">
+                                <rect key="frame" x="199" y="195" width="74" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyP-vZ-pJv">
+                                <rect key="frame" x="260" y="279" width="117" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VyP-vZ-pJv" secondAttribute="height" multiplier="117:35" id="ves-bq-e7V"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add coupon"/>
+                                <connections>
+                                    <action selector="AddNewCoupon:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2r2-Wf-1uV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter coupon code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9X-Cg-PId">
+                                <rect key="frame" x="16" y="283" width="215" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-SF-i3i">
+                                <rect key="frame" x="16" y="381" width="361" height="338"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="AIz-hY-ibk"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="PWf-Fe-iYE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SeB-Iw-wdD" firstAttribute="top" secondItem="S9X-Cg-PId" secondAttribute="bottom" constant="32" id="0SP-hT-eXf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BJu-f6-IdW" secondAttribute="trailing" constant="100" id="1SR-re-XXo"/>
+                            <constraint firstItem="BcF-zM-a8W" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="25U-Mb-1Z8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZFj-WA-a5P" secondAttribute="trailing" constant="120" id="4Z6-7J-dgT"/>
+                            <constraint firstItem="SeB-Iw-wdD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="7sN-o4-qwq"/>
+                            <constraint firstItem="qki-5C-5PH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Bs6-Pv-Dih"/>
+                            <constraint firstItem="G5q-kS-hSh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="E3q-j7-41J"/>
+                            <constraint firstItem="XBn-QI-Ze3" firstAttribute="top" secondItem="54O-xl-nqU" secondAttribute="bottom" constant="16" id="EGV-Yi-4OB"/>
+                            <constraint firstItem="O3t-SF-i3i" firstAttribute="top" secondItem="SeB-Iw-wdD" secondAttribute="bottom" constant="8" id="FKf-To-4Mq"/>
+                            <constraint firstItem="VyP-vZ-pJv" firstAttribute="top" secondItem="ZFj-WA-a5P" secondAttribute="bottom" constant="60" id="FzY-Vd-Ji4"/>
+                            <constraint firstItem="54O-xl-nqU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="GLB-OI-TKO"/>
+                            <constraint firstItem="N7z-tf-ofj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="I5j-YJ-TWj"/>
+                            <constraint firstItem="ZFj-WA-a5P" firstAttribute="top" secondItem="BJu-f6-IdW" secondAttribute="bottom" constant="16" id="ICS-5x-LKz"/>
+                            <constraint firstItem="wm8-TT-39N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Nje-Yj-ANF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="O3t-SF-i3i" secondAttribute="trailing" constant="16" id="RY9-pB-V2V"/>
+                            <constraint firstItem="O3t-SF-i3i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="X8z-lI-Rfp"/>
+                            <constraint firstItem="N7z-tf-ofj" firstAttribute="top" secondItem="qki-5C-5PH" secondAttribute="bottom" constant="16" id="Zcn-pd-1gO"/>
+                            <constraint firstItem="S9X-Cg-PId" firstAttribute="top" secondItem="G5q-kS-hSh" secondAttribute="bottom" constant="8" id="aWH-5l-Tg8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XBn-QI-Ze3" secondAttribute="trailing" constant="130" id="adC-Ff-dGn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="O3t-SF-i3i" secondAttribute="bottom" constant="50" id="bgh-Aw-37e"/>
+                            <constraint firstItem="BcF-zM-a8W" firstAttribute="top" secondItem="N7z-tf-ofj" secondAttribute="bottom" constant="16" id="eqp-Eu-Agt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="54O-xl-nqU" secondAttribute="trailing" constant="70" id="gQY-gc-YQQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VyP-vZ-pJv" secondAttribute="trailing" constant="16" id="ggW-rg-OPj"/>
+                            <constraint firstItem="qki-5C-5PH" firstAttribute="top" secondItem="wm8-TT-39N" secondAttribute="bottom" constant="16" id="kqf-y7-9oN"/>
+                            <constraint firstItem="G5q-kS-hSh" firstAttribute="top" secondItem="BcF-zM-a8W" secondAttribute="bottom" constant="32" id="lNe-Fy-zOC"/>
+                            <constraint firstItem="S9X-Cg-PId" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="quA-Hz-vxv"/>
+                            <constraint firstItem="BJu-f6-IdW" firstAttribute="top" secondItem="XBn-QI-Ze3" secondAttribute="bottom" constant="16" id="r7B-ZL-RTG"/>
+                            <constraint firstItem="O3t-SF-i3i" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.396714" id="wRw-AJ-FSm"/>
+                            <constraint firstItem="VyP-vZ-pJv" firstAttribute="leading" secondItem="S9X-Cg-PId" secondAttribute="trailing" constant="29" id="wUf-7U-oob"/>
+                            <constraint firstItem="wm8-TT-39N" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="xeZ-Ox-8Im"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Coupons" image="percent" catalog="system" id="dJy-Ye-7Kj"/>
                     <navigationItem key="navigationItem" title="Coupons" id="vug-Dq-thZ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="discountCodesTableView" destination="O3t-SF-i3i" id="tG9-Lc-OWF"/>
+                        <outlet property="newCouponCode" destination="S9X-Cg-PId" id="1ZD-Hz-zkl"/>
+                        <outlet property="priceRuleAvaialability" destination="BJu-f6-IdW" id="4iS-jg-m5I"/>
+                        <outlet property="priceRuleId" destination="54O-xl-nqU" id="aO6-X0-KG4"/>
+                        <outlet property="priceRuleTargetType" destination="ZFj-WA-a5P" id="EEe-qM-ZiN"/>
+                        <outlet property="priceRuleValue" destination="XBn-QI-Ze3" id="ANh-An-vWS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,9 +190,6 @@
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Wpp-Ht-m8p"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfL-l8-IAz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
