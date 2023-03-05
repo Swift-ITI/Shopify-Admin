@@ -26,7 +26,7 @@ class CouponsVC: UIViewController {
     var priceRule: PriceRuleResult?
     var discountCodeViewModel: DiscountCodesViewModel?
     var discountCodes: DiscountCodes?
-    var arrOfDiscountCodes : [String] = []
+ 
 
     
     override func viewDidLoad() {
@@ -34,30 +34,36 @@ class CouponsVC: UIViewController {
 
         priceRuleViewModel = PriceRuleViewModel()
         discountCodeViewModel = DiscountCodesViewModel()
+        
         priceRuleViewModel?.fetchData(target: .priceRule)
         priceRuleViewModel?.bindPriceRuleToCouponsVC = { () in
             DispatchQueue.main.async {
                 self.priceRule = self.priceRuleViewModel?.priceRule
-
                 self.priceRuleId.text = String(self.priceRule?.price_rules.first?.id ?? 0)
                 self.priceRuleValue.text = self.priceRule?.price_rules.first?.value
                 self.priceRuleAvaialability.text = "\(self.priceRule?.price_rules.first?.customer_selection ?? "No") customers"
                 self.priceRuleTargetType.text = self.priceRule?.price_rules.first?.target_type
 
-                self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
+                self.getCoupons()
+                self.discountCodesTableView.reloadData()
             }
         }
         // id = 1380100899094
 
+        
+    }
+    
+    func getCoupons(){
+        self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
+        
         discountCodeViewModel?.bindDiscountCodesToCouponsVC = { () in
+//            self.discountCodes = self.discountCodeViewModel?.discountCodes
             DispatchQueue.main.async {
                 self.discountCodes = self.discountCodeViewModel?.discountCodes
-                
-                for code in self.discountCodes!.discount_codes {
-                    self.arrOfDiscountCodes.append(code.code)
-                }
+
                 self.discountCodesTableView.reloadData()
             }
+            self.discountCodesTableView.reloadData()
         }
     }
 
@@ -74,8 +80,10 @@ class CouponsVC: UIViewController {
                 ]
             // discountCodes?.discount_codes
             discountCodeViewModel?.postData(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
+           
 
-            arrOfDiscountCodes.append(newCouponCode.text ?? "")
+            getCoupons()
+            //arrOfDiscountCodes.append(newCouponCode.text ?? "")
             discountCodesTableView.reloadData()
         }
 
@@ -130,14 +138,14 @@ extension CouponsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrOfDiscountCodes.count
+        return discountCodes?.discount_codes.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CouponCV = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponCV
-        cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
-        //cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
-       // cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
+        //cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
+        cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
+        cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
 
         return cell
     }
