@@ -12,7 +12,7 @@ class ProductDetailsVC: UIViewController {
     var product: Product?
     var productVM: ViewModel?
     var flag: Int?
-    var producImgs: [String] = []
+    var producImgs: [[String : Any]] = []
     var productSizes: [String] = []
     var productColors: [String] = []
     var status: String?
@@ -63,7 +63,8 @@ class ProductDetailsVC: UIViewController {
 
         productVM = ViewModel()
         product?.images?.forEach({ img in
-            self.producImgs.append(img.src)
+            self.producImgs.append(["src" : img.src])
+           // self.producImgs.append(img.src)
         })
 
         productSizes = (product?.options?[0].values) ?? []
@@ -111,7 +112,7 @@ class ProductDetailsVC: UIViewController {
 
     @IBAction func addProductImg(_ sender: Any) {
         if productImgURL.text != "" {
-            producImgs.append(productImgURL.text ?? "NoImg")
+            producImgs.append(["src" : productImgURL.text ?? "NoImg"])
             ProductImagesTableView.reloadData()
 
         } else {
@@ -231,7 +232,7 @@ extension ProductDetailsVC: UITableViewDataSource {
         case ProductImagesTableView:
 
             // cell.image.kf.setImage(with: URL(string: product?.images?[indexPath.row].src ?? ""))
-            cell.textLabel?.text = producImgs[indexPath.row]
+            cell.textLabel?.text = producImgs[indexPath.row]["src"] as? String
 
         case productSizeTableView:
             cell.textLabel?.text = productSizes[indexPath.row]
@@ -254,34 +255,31 @@ extension ProductDetailsVC {
             "product": [
                 "title": productName.text ?? "",
                 "body_html": productDiscription.text ?? "",
-                "vendor": "EGYPT",
+                "vendor": "ADIDAS",
                 "status": productStatus.titleForSegment(at: productStatus.selectedSegmentIndex) ?? "",
                 "variants": [
                     [
-                        "price": productPrice.text,
-                        "sku": sku.text,
-                        "inventory_quantity": productAvaliableQuantatiy.text
+                        "price": productPrice.text ?? "",
+                        "sku": sku.text ?? "",
+                        "inventory_quantity": productAvaliableQuantatiy.text ?? "",
+                        "option1": productSizes[0],
+                        "option2": productColors[0]
                     ]
                 ],
                 "options": [
                     [
-                        "name":"Size",
+                        "name": "Size",
                         "position": 1,
-                        "values": [
-                            productSizes
-                        ]
+                        "values": productSizes
+                
+                    ],
+                    [
+                        "name":"Color",
+                        "position": 2,
+                        "values": productColors
                     ]
-//                    [
-//                        "name":"Color",
-//                        "position": 2,
-//                        "values": [
-//                            productColors
-//                        ]
-//                    ]
                 ],
-                "image": [
-                    "src": productImgURL.text
-                ]
+                "images": producImgs
             ]
         ]
         productVM?.postProduct(target: .allProducts, parameters: parameters)
