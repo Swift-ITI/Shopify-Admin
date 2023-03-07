@@ -12,7 +12,7 @@ class ProductDetailsVC: UIViewController {
     var product: Product?
     var productVM: ViewModel?
     var flag: Int?
-    var producImgs: [[String : Any]] = []
+    var producImgs: [[String: Any]] = []
     var productSizes: [String] = []
     var productColors: [String] = []
     var status: String?
@@ -62,9 +62,10 @@ class ProductDetailsVC: UIViewController {
         super.viewDidLoad()
 
         productVM = ViewModel()
+
         product?.images?.forEach({ img in
-            self.producImgs.append(["src" : img.src])
-           // self.producImgs.append(img.src)
+            self.producImgs.append(["src": img.src])
+            // self.producImgs.append(img.src)
         })
 
         productSizes = (product?.options?[0].values) ?? []
@@ -112,7 +113,7 @@ class ProductDetailsVC: UIViewController {
 
     @IBAction func addProductImg(_ sender: Any) {
         if productImgURL.text != "" {
-            producImgs.append(["src" : productImgURL.text ?? "NoImg"])
+            producImgs.append(["src": productImgURL.text ?? "NoImg"])
             ProductImagesTableView.reloadData()
 
         } else {
@@ -157,7 +158,7 @@ class ProductDetailsVC: UIViewController {
             postData()
             break
         case 2: // update to API
-            break
+            putData()
         default: break
         }
     }
@@ -248,9 +249,10 @@ extension ProductDetailsVC: UITableViewDataSource {
     }
 }
 
-//MARK: POST
+// MARK: POST
+
 extension ProductDetailsVC {
-    func postData(){
+    func postData() {
         let parameters: [String: Any] = [
             "product": [
                 "title": productName.text ?? "",
@@ -263,26 +265,87 @@ extension ProductDetailsVC {
                         "sku": sku.text ?? "",
                         "inventory_quantity": productAvaliableQuantatiy.text ?? "",
                         "option1": productSizes[0],
-                        "option2": productColors[0]
-                    ]
+                        "option2": productColors[0],
+                    ],
                 ],
                 "options": [
                     [
                         "name": "Size",
                         "position": 1,
-                        "values": productSizes
-                
+                        "values": productSizes,
+
                     ],
                     [
-                        "name":"Color",
+                        "name": "Color",
                         "position": 2,
-                        "values": productColors
-                    ]
+                        "values": productColors,
+                    ],
                 ],
-                "images": producImgs
-            ]
+                "images": producImgs,
+            ],
         ]
         productVM?.postProduct(target: .allProducts, parameters: parameters)
         showAlert(title: "Done", msg: "Added Successfully")
+    }
+
+    func putData() {
+        let str:NSString = productAvaliableQuantatiy.text! as NSString
+        let parameters: [String: Any] = [
+            "product": [
+                "title": productName.text ?? "",
+                "body_html": productDiscription.text ?? "",
+                "vendor": "ADIDAS",
+                "status": productStatus.titleForSegment(at: productStatus.selectedSegmentIndex) ?? "",
+                "variants": [
+                    [
+                        "price": productPrice.text ?? "",
+                        "sku": sku.text ?? "",
+                        "inventory_quantity": str.integerValue ,
+                        "option1": productSizes[0],
+                        "option2": productColors[0],
+                    ],
+                ],
+                "options": [
+                    [
+                        "name": "Size",
+                        "position": 1,
+                        "values": productSizes,
+
+                    ],
+                    [
+                        "name": "Color",
+                        "position": 2,
+                        "values": productColors,
+                    ],
+                ],
+                "images": producImgs,
+            ],
+        ]
+        productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
+        productVM?.bindResponseToVC = {
+            DispatchQueue.main.async {
+                switch self.productVM?.response?.keys.formatted() {
+                case "product":
+                    self.showAlert(title: "Success", msg: "Edited Successfullt")
+                    print(self.productVM?.response?["product"] ?? "")
+                case "errors":
+                    var errorMessages = ""
+
+                    if let errors = self.productVM?.response?["errors"] as? [String: Any] {
+                        for (field, messages) in errors {
+                            errorMessages += "\(field.capitalized): "
+                            if let messages = messages as? [String] {
+                                for message in messages {
+                                    errorMessages += " \(message)\n"
+                                }
+                            }
+                        }
+                    }
+                    self.showAlert(title: "Error", msg: errorMessages)
+                default:
+                    print("done")
+                }
+            }
+        }
     }
 }
