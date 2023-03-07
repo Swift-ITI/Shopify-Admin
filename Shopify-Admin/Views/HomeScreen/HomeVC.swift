@@ -23,6 +23,7 @@ class HomeVC: UIViewController {
     var viewModel = ViewModel()
     var products:[Product]?
     var searchProducts:[Product]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let indicator = UIActivityIndicatorView(style: .large)
@@ -36,7 +37,13 @@ class HomeVC: UIViewController {
         }
         inventoryCV.reloadData()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+//        viewModel.bindProductsToInventoryVC = { () in
+//            self.renderProducts()
+//            self.indicator.stopAnimating()
+//        }
+        inventoryCV.reloadData()
+    }
     @IBAction func addNewProduct(_ sender: Any) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
         invDetail.flag = 1

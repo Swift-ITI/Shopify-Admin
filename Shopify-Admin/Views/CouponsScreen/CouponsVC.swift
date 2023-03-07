@@ -79,11 +79,9 @@ class CouponsVC: UIViewController {
                         ],
                 ]
             // discountCodes?.discount_codes
-            discountCodeViewModel?.postData(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
-           
+            discountCodeViewModel?.postCoupon(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
 
-            getCoupons()
-            //arrOfDiscountCodes.append(newCouponCode.text ?? "")
+            //discountCodes?.discount_codes.append(<#T##Element#>)
             discountCodesTableView.reloadData()
         }
 
@@ -143,9 +141,9 @@ extension CouponsVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CouponCV = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponCV
-        //cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
+//        cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
         cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
-        cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
+       cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
 
         return cell
     }
