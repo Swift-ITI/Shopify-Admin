@@ -9,44 +9,45 @@ import Foundation
 var BaseUrl = "https://29f36923749f191f42aa83c96e5786c5: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@ios-q2-new-capital-admin-2022-2023.myshopify.com/admin/api/2023-01"
 
 enum EndPoints {
-    
     case allProducts
-    case catigoriesProducts (id : String)
-    case shoes (id : String) //"SHOES"
-    case accessories (id : String) //"ACCESSORIES"
-    case tshirts (id : String) //"T-SHIRTS"
+    case productByID(id: Int)
+    case catigoriesProducts(id: String)
+    case shoes(id: String) // "SHOES"
+    case accessories(id: String) // "ACCESSORIES"
+    case tshirts(id: String) // "T-SHIRTS"
     case priceRule
-    case discountCodes (id : String)
-    case deleteCodeByID (ruleID:Int,codeID:Int)
-    case deleteProductByID (productID: Int)
+    case discountCodes(id: String)
+    case deleteCodeByID(ruleID: Int, codeID: Int)
+    case deleteProductByID(productID: Int)
     case customers
-    var path : String {
-        switch self{
+    var path: String {
+        switch self {
         case .allProducts:
             return "\(BaseUrl)/products.json"
-        case .catigoriesProducts (id : let id) :
+        case let .productByID(id: id):
+            return "\(BaseUrl)/products/\(id).json"
+        case let .catigoriesProducts(id: id):
             return "\(BaseUrl)/products.json?collection_id=\(id)"
-        case .shoes (id : let id):
+        case let .shoes(id: id):
             return "\(BaseUrl)/products.json?collection_id=\(id)&product_type=SHOES"
-        case .accessories (id : let id):
+        case let .accessories(id: id):
             return "\(BaseUrl)/products.json?collection_id=\(id)&product_type=ACCESSORIES"
-        case .tshirts (id : let id):
+        case let .tshirts(id: id):
             return "\(BaseUrl)/products.json?collection_id=\(id)&product_type=T-SHIRTS"
         case .priceRule:
             return "\(BaseUrl)/price_rules.json"
-        case .discountCodes (id : let id):
+        case let .discountCodes(id: id):
             return "\(BaseUrl)/price_rules/\(id)/discount_codes.json"
-                
-        case .deleteCodeByID(ruleID: let ruleID, codeID: let codeID):
+
+        case let .deleteCodeByID(ruleID: ruleID, codeID: codeID):
             return "\(BaseUrl)/price_rules/\(ruleID)/discount_codes/\(codeID).json"
-        case .customers :
+        case .customers:
             return "\(BaseUrl)/customers.json"
-                
-        case .deleteProductByID(productID: let id):
+
+        case let .deleteProductByID(productID: id):
             return "\(BaseUrl)/products/\(id).json"
         }
     }
-    
 }
 
 enum CatigoryID {
@@ -55,8 +56,8 @@ enum CatigoryID {
     case men
     case sale
     case women
-    
-    var id : String {
+
+    var id: String {
         switch self {
         case .homePage:
             return "436748681494"

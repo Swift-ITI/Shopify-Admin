@@ -10,6 +10,7 @@ import UIKit
 class HomeVC: UIViewController {
 
     
+    @IBOutlet weak var catigorizedProducts: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
@@ -26,11 +27,16 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProducts(target: .allProducts)
+       
+    }
+    
+    func getProducts(target: EndPoints){
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.center = view.center
         view.addSubview(indicator)
         indicator.startAnimating()
-        viewModel.fetchData(target: .allProducts)
+        viewModel.fetchData(target: target)
         viewModel.bindProductsToInventoryVC = { () in
             self.renderProducts()
             indicator.stopAnimating()
@@ -44,9 +50,30 @@ class HomeVC: UIViewController {
 //        }
         inventoryCV.reloadData()
     }
+    
+    @IBAction func selsectCatigorizedProduct(_ sender: Any) {
+        switch catigorizedProducts.selectedSegmentIndex {
+        case 0:
+            getProducts(target: .allProducts)
+        case 1:
+            getProducts(target: .catigoriesProducts(id: CatigoryID.kids.id))
+          
+        case 2:
+            getProducts(target: .catigoriesProducts(id: CatigoryID.men.id))
+           
+        case 3:
+            getProducts(target: .catigoriesProducts(id: CatigoryID.sale.id))
+           
+        case 4:
+            getProducts(target: .catigoriesProducts(id: CatigoryID.women.id))
+           
+        default: break
+        }
+    }
     @IBAction func addNewProduct(_ sender: Any) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
         invDetail.flag = 1
+        invDetail.product_collection = catigorizedProducts.titleForSegment(at: catigorizedProducts.selectedSegmentIndex) ?? ""
         self.navigationController?.pushViewController(invDetail, animated: true)
     }
 }
@@ -74,6 +101,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
         invDetail.flag = 2
+        invDetail.product_collection = catigorizedProducts.titleForSegment(at: catigorizedProducts.selectedSegmentIndex) ?? ""
         invDetail.product = products?[indexPath.row]
         self.navigationController?.pushViewController(invDetail, animated: true)
     }

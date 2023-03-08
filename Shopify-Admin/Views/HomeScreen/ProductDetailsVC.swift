@@ -12,11 +12,15 @@ class ProductDetailsVC: UIViewController {
     var product: Product?
     var productVM: ViewModel?
     var flag: Int?
-    var producImgs: [[String : Any]] = []
+    var producImgs: [[String: Any]] = []
     var productSizes: [String] = []
     var productColors: [String] = []
     var status: String?
-
+    var product_collection : String = ""
+        
+    
+    @IBOutlet weak var productVendor: UITextField!
+    @IBOutlet weak var save_editBtn: UIButton!
     @IBOutlet var productName: UITextField!
     @IBOutlet var productDiscription: UITextView!
     @IBOutlet var productPrice: UITextField!
@@ -60,11 +64,22 @@ class ProductDetailsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        switch flag {
+        case 1:
+            save_editBtn.setTitle("save", for: .normal)
+        case 2:
+            save_editBtn.setTitle("edit", for: .normal)
+        default:
+            break
+        }
+       
 
         productVM = ViewModel()
+
         product?.images?.forEach({ img in
-            self.producImgs.append(["src" : img.src])
-           // self.producImgs.append(img.src)
+            self.producImgs.append(["src": img.src])
+            // self.producImgs.append(img.src)
         })
 
         productSizes = (product?.options?[0].values) ?? []
@@ -74,6 +89,7 @@ class ProductDetailsVC: UIViewController {
         productDiscription.text = product?.body_html
         productPrice.text = product?.variants?[0].price
         productAvaliableQuantatiy.text = String(product?.variants?[0].inventory_quantity ?? 0)
+        productCollection.text = product_collection
         sku.text = product?.variants?[0].sku
         // productCollection.text = product?
         productType.text = product?.product_type
@@ -112,7 +128,7 @@ class ProductDetailsVC: UIViewController {
 
     @IBAction func addProductImg(_ sender: Any) {
         if productImgURL.text != "" {
-            producImgs.append(["src" : productImgURL.text ?? "NoImg"])
+            producImgs.append(["src": productImgURL.text ?? "NoImg"])
             ProductImagesTableView.reloadData()
 
         } else {
@@ -152,14 +168,18 @@ class ProductDetailsVC: UIViewController {
     }
 
     @IBAction func saveProduct(_ sender: Any) {
-        switch flag {
-        case 1:
-            postData()
-            break
-        case 2: // update to API
-            break
-        default: break
-        }
+        if(productName.text != "" && productDiscription.text != "" && productPrice.text != "" && productCollection.text != "" && productType.text != "" && sku.text != "" && !(producImgs.isEmpty && productSizes.isEmpty && productColors.isEmpty)){
+          
+            switch flag {
+            case 1:
+                postData()
+                break
+            case 2: // update to API
+                putData()
+            default: break
+            }
+        }else {showAlert(title: "missing data", msg: "Please enter all fields")}
+     
     }
 
     @IBAction func deleteProduct(_ sender: Any) {
@@ -178,11 +198,8 @@ class ProductDetailsVC: UIViewController {
 
             }))
             present(alert, animated: true, completion: nil)
+        default: break
 
-        case .none:
-            print("Noe")
-        case .some:
-            print("Yes")
         }
     }
 
@@ -199,7 +216,9 @@ class ProductDetailsVC: UIViewController {
         case 0:
             status = "active"
         case 1:
-            status = "inactive"
+            status = "archived"
+        case 2:
+            status = "draft"
         default:
             break
         }
@@ -248,41 +267,143 @@ extension ProductDetailsVC: UITableViewDataSource {
     }
 }
 
-//MARK: POST
+// MARK: POST
+
 extension ProductDetailsVC {
-    func postData(){
+    func postData() {
+//        print("name:\(productName.text)")
+//        print("Desc:\(productDiscription.text)")
+//        print("state:\(productStatus.titleForSegment(at: productStatus.selectedSegmentIndex))")
+//        print("price\(productPrice.text)")
+//        print("sku\(sku.text)")
+//        print("quna: \(productAvaliableQuantatiy.text)")
+//        print("sizs\(productSizes)")
+//        print("colors\(productColors)")
+//        print("imgs\(producImgs)")
+        
         let parameters: [String: Any] = [
             "product": [
                 "title": productName.text ?? "",
                 "body_html": productDiscription.text ?? "",
-                "vendor": "ADIDAS",
+                "vendor": productVendor.text ?? "",
+                "product_type": productType.text ?? 0,
                 "status": productStatus.titleForSegment(at: productStatus.selectedSegmentIndex) ?? "",
                 "variants": [
                     [
                         "price": productPrice.text ?? "",
                         "sku": sku.text ?? "",
+                       // "position": 1,
                         "inventory_quantity": productAvaliableQuantatiy.text ?? "",
                         "option1": productSizes[0],
-                        "option2": productColors[0]
+                        "option2": productColors[0],
                     ]
                 ],
                 "options": [
                     [
                         "name": "Size",
                         "position": 1,
-                        "values": productSizes
-                
+                        "values": productSizes,
                     ],
                     [
-                        "name":"Color",
+                        "name": "Color",
                         "position": 2,
-                        "values": productColors
-                    ]
+                        "values": productColors,
+                    ],
                 ],
-                "images": producImgs
+                "images": producImgs,
             ]
         ]
-        productVM?.postProduct(target: .allProducts, parameters: parameters)
+        switch product_collection {
+        case "All" :
+            productVM?.postProduct(target: .allProducts, parameters: parameters)
+        case "Kids" :
+            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.kids.id), parameters: parameters)
+        case "Men" :
+            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.men.id), parameters: parameters)
+        case "Sale" :
+            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.sale.id), parameters: parameters)
+        case "Women" :
+            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.women.id), parameters: parameters)
+        default:
+            showAlert(title: "Oh ..))", msg: "some thing wrong please try again")
+            
+        }
+       
         showAlert(title: "Done", msg: "Added Successfully")
+    }
+    
+    //MARK: Edit
+
+    func putData() {
+//        print("name:\(productName.text)")
+//        print("Desc:\(productDiscription.text)")
+//        print("state:\(productStatus.titleForSegment(at: productStatus.selectedSegmentIndex))")
+//        print("price\(productPrice.text)")
+//        print("sku\(sku.text)")
+//        print("quna: \(productAvaliableQuantatiy.text)")
+//        print("sizs\(productSizes)")
+//        print("colors\(productColors)")
+//        print("imgs\(producImgs)")
+        
+        let str:NSString = productAvaliableQuantatiy.text! as NSString
+//        print("quna: \(str.intValue)")
+
+        let parameters: [String: Any] = [
+            "product": [
+                "title": productName.text ?? "",
+                "body_html": productDiscription.text ?? "",
+                "vendor": productVendor.text ?? "",
+                "product_type": productType.text ?? 0,
+                "variants": [
+                    [
+                        "price": productPrice.text ?? "",
+                        "sku": sku.text ?? "",
+                        "inventory_quantity": str.integerValue ,
+                        "option1": productSizes[0],
+                        "option2": productColors[0],
+                    ],
+                ],
+                "options": [
+                    [
+                        "name": "Size",
+                        "position": 1,
+                        "values": productSizes,
+
+                    ],
+                    [
+                        "name": "Color",
+                        "position": 2,
+                        "values": productColors,
+                    ],
+                ],
+                "images": producImgs,
+            ],
+        ]
+        productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
+        productVM?.bindResponseToVC = {
+            DispatchQueue.main.async {
+                switch self.productVM?.response?.keys.formatted() {
+                case "product":
+                    self.showAlert(title: "Success", msg: "Edited Successfully")
+                    print(self.productVM?.response?["product"] ?? "")
+                case "errors":
+                    var errorMessages = ""
+
+                    if let errors = self.productVM?.response?["errors"] as? [String: Any] {
+                        for (field, messages) in errors {
+                            errorMessages += "\(field.capitalized): "
+                            if let messages = messages as? [String] {
+                                for message in messages {
+                                    errorMessages += " \(message)\n"
+                                }
+                            }
+                        }
+                    }
+                    self.showAlert(title: "Error", msg: errorMessages)
+                default:
+                    print("done")
+                }
+            }
+        }
     }
 }
