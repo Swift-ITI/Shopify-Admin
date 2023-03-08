@@ -183,33 +183,33 @@ extension ProductDetailsVC {
        
         let parameters: [String: Any] = [
             "product": [
-                "title": productName.text ?? "",
-                "body_html": productDiscription.text ?? "",
-                "vendor": productVendor.text ?? "",
-                "product_type": productType.text ?? 0,
+                "title": productName.text!,
+                "body_html": productDiscription.text!,
+                "vendor": productVendor.text!,
+                "product_type": productType.text!,
                 "variants": [
                     [
-                        "price": productPrice.text ?? "",
-                        "sku": sku.text ?? "",
+                        "price": productPrice.text!,
+                        "sku": sku.text!,
                        // "position": 1,
-                        "inventory_quantity": productAvaliableQuantatiy.text ?? "",
-                        "option1": productSize.text ?? "",//productSizes[0],
-                        "option2": productColor.text ?? "",//productColors[0],
+                        "inventory_quantity": productAvaliableQuantatiy.text!,
+                        "option1": productSize.text!,//productSizes[0],
+                        "option2": productColor.text!//productColors[0],
                     ]
                 ],
                 "options": [
                     [
                         "name": "Size",
                         "position": 1,
-                        "values": [productSize.text ?? ""],
+                        "values": [productSize.text!]
                     ],
                     [
                         "name": "Color",
                         "position": 2,
-                        "values": [productColor.text ?? ""],
-                    ],
+                        "values": [productColor.text!]
+                    ]
                 ],
-                "images": producImgs,
+                "images": producImgs
             ]
         ]
         switch product_collection {
@@ -249,33 +249,33 @@ extension ProductDetailsVC {
 
         let parameters: [String: Any] = [
             "product": [
-                "title": productName.text ?? "",
-                "body_html": productDiscription.text ?? "",
-                "vendor": productVendor.text ?? "",
-                "product_type": productType.text ?? 0,
+                "title": productName.text!,
+                "body_html": productDiscription.text!,
+                "vendor": productVendor.text!,
+                "product_type": productType.text!,
                 "variants": [
                     [
-                        "price": productPrice.text ?? "",
-                        "sku": sku.text ?? "",
+                        "price": productPrice.text!,
+                        "sku": sku.text!,
                         "inventory_quantity": str.integerValue ,
-                        "option1": productSize.text ?? "",//productSizes[0],
-                        "option2": productColor.text ?? "",//productColors[0],
+                        "option1": productSize.text!,//productSizes[0],
+                        "option2": productColor.text!//productColors[0],
                     ],
                 ],
                 "options": [
                     [
                         "name": "Size",
                         "position": 1,
-                        "values": [productSize.text ?? ""],
+                        "values": [productSize.text!]
 
                     ],
                     [
                         "name": "Color",
                         "position": 2,
-                        "values": [productColor.text ?? ""],
-                    ],
+                        "values": [productColor.text!]
+                    ]
                 ],
-                "images": producImgs,
+                "images": producImgs
             ],
         ]
         productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
