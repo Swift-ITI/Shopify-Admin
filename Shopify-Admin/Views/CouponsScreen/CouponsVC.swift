@@ -27,7 +27,7 @@ class CouponsVC: UIViewController {
     var discountCodeViewModel: DiscountCodesViewModel?
     var discountCodes: DiscountCodes?
  
-
+    let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +50,13 @@ class CouponsVC: UIViewController {
         }
         // id = 1380100899094
 
-        
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresh.addTarget(self, action: #selector(render), for: .valueChanged)
+        discountCodesTableView.addSubview(refresh)
     }
-    
+    @objc func render (){
+        getCoupons()
+    }
     func getCoupons(){
         self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
         
@@ -62,6 +66,7 @@ class CouponsVC: UIViewController {
                 self.discountCodes = self.discountCodeViewModel?.discountCodes
 
                 self.discountCodesTableView.reloadData()
+                self.refresh.endRefreshing()
             }
             self.discountCodesTableView.reloadData()
         }
