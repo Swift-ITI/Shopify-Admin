@@ -59,7 +59,7 @@ class PriceRuleViewModel {
 
 class DiscountCodesViewModel {
     var bindDiscountCodesToCouponsVC: (() -> Void) = {}
-    var discountCodes: DiscountCodes! {
+    var discountCodes: DiscountCodes? {
         didSet {
             bindDiscountCodesToCouponsVC()
         }

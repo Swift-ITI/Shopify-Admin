@@ -15,10 +15,6 @@ class HomeVC: UIViewController {
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
             renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
-//            inventoryCV.delegate = self
-//            inventoryCV.dataSource = self
-//            let nib = UINib(nibName: "InventoryCVCell", bundle: nil)
-//            inventoryCV.register(nib, forCellWithReuseIdentifier: "inventoryCell")
         }
     }
     var viewModel = ViewModel()
@@ -97,7 +93,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        CGSize(width: inventoryCV.frame.width - 16, height: inventoryCV.frame.height / 3.8)
+//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let invDetail = self.storyboard?.instantiateViewController(withIdentifier: "inventoryDetails") as! ProductDetailsVC
         invDetail.flag = 2
@@ -117,6 +115,7 @@ extension HomeVC {
         CV.register(nib, forCellWithReuseIdentifier: cellID)
     }
 
+    
     func cellInit(CV: UICollectionView, cellID: String, index: IndexPath) -> UICollectionViewCell {
         let cell = CV.dequeueReusableCell(withReuseIdentifier: cellID, for: index)
         return cell

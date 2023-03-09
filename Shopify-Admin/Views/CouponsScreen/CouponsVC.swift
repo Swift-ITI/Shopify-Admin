@@ -25,9 +25,7 @@ class CouponsVC: UIViewController {
     var priceRuleViewModel: PriceRuleViewModel?
     var priceRule: PriceRuleResult?
     var discountCodeViewModel: DiscountCodesViewModel?
-    var discountCodes: DiscountCodes?
-    var arrOfDiscountCodes : [String] = []
-
+    var discountCodes: [DiscountCode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +49,7 @@ class CouponsVC: UIViewController {
 
         discountCodeViewModel?.bindDiscountCodesToCouponsVC = { () in
             DispatchQueue.main.async {
-                self.discountCodes = self.discountCodeViewModel?.discountCodes
-                
-                
+                self.discountCodes = self.discountCodeViewModel?.discountCodes?.discount_codes ?? []
                 self.discountCodesTableView.reloadData()
             }
         }
@@ -61,7 +57,7 @@ class CouponsVC: UIViewController {
 
     @IBAction func AddNewCoupon(_ sender: Any) {
         if newCouponCode.text == "" {
-            showAlert()
+            showAlert(title: "No Data !", msg: "Enter Data", handler: {_ in })
         } else {
             let parameters: [String: Any] =
                 [
@@ -71,21 +67,28 @@ class CouponsVC: UIViewController {
                         ],
                 ]
             // discountCodes?.discount_codes
+//            let json = try! JSONSerialization.data(withJSONObject: parameters)
+//            let discCode = try! JSONDecoder().decode(DiscountCode.self, from: json)
             discountCodeViewModel?.postCoupon(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
-
+            
+            
+            showAlert(title: "Added", msg: "Successfully Added") { action in
+                self.newCouponCode.text = ""
+                self.discountCodeViewModel?.fetchData(target: .discountCodes(id: String(self.priceRule?.price_rules.first?.id ?? 0)))
+                
+                self.discountCodeViewModel?.bindDiscountCodesToCouponsVC = { () in
+                    DispatchQueue.main.async {
+                        self.discountCodes = self.discountCodeViewModel?.discountCodes?.discount_codes ?? []
+                        self.discountCodesTableView.reloadData()
+                    }
+                }
+            }
+            
             //discountCodes?.discount_codes.append(<#T##Element#>)
-            discountCodesTableView.reloadData()
+            //discountCodesTableView.reloadData()
         }
 
         // let parameters: [String : Any] = ["discount_code" : ["code":"Zeinab2000","usage_count":0]]
-    }
-
-    func showAlert() {
-        let alert = UIAlertController(title: "incomplete data", message: "Enter full data", preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -108,9 +111,9 @@ extension CouponsVC: UITableViewDataSource {
 
             alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in
                 indicator.startAnimating()
-                self.discountCodeViewModel?.deleteCode(target: .deleteCodeByID(ruleID: self.priceRule?.price_rules.first?.id ?? 0, codeID: self.discountCodes?.discount_codes[indexPath.row].id ?? 0))
+                self.discountCodeViewModel?.deleteCode(target: .deleteCodeByID(ruleID: self.priceRule?.price_rules.first?.id ?? 0, codeID: self.discountCodes[indexPath.row].id ?? 0 ))
                 
-                self.discountCodes?.discount_codes.remove(at: indexPath.row)
+                self.discountCodes.remove(at: indexPath.row)
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.reloadData()
@@ -128,22 +131,24 @@ extension CouponsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return discountCodes?.discount_codes.count ?? 0
+        return discountCodes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CouponCV = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponCV
 //        cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
-        cell.discountCode.text = discountCodes?.discount_codes[indexPath.row].code
-       cell.discountUsage.text = String(discountCodes?.discount_codes[indexPath.row].usage_count ?? 0)
+        cell.discountCode.text = discountCodes[indexPath.row].code
+       cell.discountUsage.text = String(discountCodes[indexPath.row].usage_count ?? 0)
 
         return cell
     }
 
-    func showAlert(title: String, msg: String) {
+    func showAlert(title: String, msg: String,handler:@escaping (UIAlertAction)->Void) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            handler(action)
+        }))
 
         present(alert, animated: true, completion: nil)
     }

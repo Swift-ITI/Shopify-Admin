@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="inventoryCell" id="gTV-IL-0wX" customClass="InventoryCVCell" customModule="Shopify_Admin" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" reuseIdentifier="inventoryCell" id="gTV-IL-0wX" customClass="InventoryCVCell" customModule="Shopify_Admin" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="133"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKU:1111111111111111111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3b-pR-c7w">
-                        <rect key="frame" x="117" y="86.666666666666671" width="235" height="17"/>
+                        <rect key="frame" x="117" y="86.666666666666671" width="223" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <color key="textColor" name="AccentColor"/>
                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="cGg-WV-b2U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="0Rq-H6-f76"/>
-                <constraint firstAttribute="trailing" secondItem="B3b-pR-c7w" secondAttribute="trailing" constant="8" id="7rm-ax-FNG"/>
+                <constraint firstAttribute="trailing" secondItem="B3b-pR-c7w" secondAttribute="trailing" constant="20" id="7rm-ax-FNG"/>
                 <constraint firstItem="3Um-PY-BMw" firstAttribute="top" secondItem="ON2-Hz-cg9" secondAttribute="bottom" constant="-21.000000000000014" id="9q7-J1-iz9"/>
                 <constraint firstItem="ON2-Hz-cg9" firstAttribute="top" secondItem="SKD-Qr-5Yx" secondAttribute="bottom" constant="16" id="FJa-O2-Ed2"/>
                 <constraint firstAttribute="trailing" secondItem="SKD-Qr-5Yx" secondAttribute="trailing" constant="16" id="HLF-cb-yzD"/>

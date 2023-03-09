@@ -31,7 +31,13 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var productVendor: UITextField!
     @IBOutlet weak var save_editBtn: UIButton!
     @IBOutlet var productName: UITextField!
-    @IBOutlet var productDiscription: UITextView!
+    @IBOutlet var productDiscription: UITextView!{
+        didSet{
+            productDiscription.layer.cornerRadius = 10
+            productDiscription.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+            productDiscription.layer.borderWidth = 1.5
+        }
+    }
     @IBOutlet var productPrice: UITextField!
     @IBOutlet var productImgURL: UITextField!
     @IBOutlet var productCollection: UILabel!
@@ -42,18 +48,11 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet var productColor: UITextField!
     @IBOutlet var productAvaliableQuantatiy: UILabel!
     @IBOutlet var productAvaliableManually: UITextField!
-    @IBOutlet var sku: UITextField! {
-        didSet {
-            sku.layer.borderWidth = 2
-            sku.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
-            sku.layer.cornerRadius = 10
-            
-        }
-    }
+    @IBOutlet var sku: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        renderTxtFields(txtFields: [productName,productPrice,productVendor,productImgURL,productSize,productColor,productAvaliableManually,sku])
         switch flag {
         case 1:
             save_editBtn.setTitle("save", for: .normal)
@@ -322,4 +321,14 @@ extension ProductDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource
       return cell
     }
     
+}
+//MARK: Rendering
+extension ProductDetailsVC {
+    func renderTxtFields(txtFields: [UITextField]) {
+        for txtField in txtFields {
+            txtField.layer.cornerRadius = 10
+            txtField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
+            txtField.layer.borderWidth = 1.5
+        }
+    }
 }

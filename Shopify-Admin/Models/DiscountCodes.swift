@@ -11,8 +11,8 @@ class DiscountCodes : Decodable {
 }
 
 class DiscountCode : Decodable {
-    var id : Int
-    var price_rule_id : Int
-    var code : String
+    var id : Int?
+    var price_rule_id : Int?
+    var code : String?
     var usage_count : Int?
 }
