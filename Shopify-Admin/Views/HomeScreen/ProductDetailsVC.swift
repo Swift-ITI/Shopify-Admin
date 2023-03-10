@@ -226,11 +226,9 @@ extension ProductDetailsVC {
                     
                     self.productId = product["id"] as? Int ?? 0
                     print(self.productId)
-                    self.categorized()
+                    self.categorized(productId: self.productId)
+                    self.productVM?.postProduct(target: .collect, parameters: self.params)
                     
-              
-                    
-
                     self.showAlert(title: "Done", msg: "Addedd Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     })
@@ -256,7 +254,7 @@ extension ProductDetailsVC {
         }
     }
     
-    func categorized(){
+    func categorized(productId: Int){
         
         switch self.productCollection.text {
          case "Kids":
@@ -267,7 +265,7 @@ extension ProductDetailsVC {
                     "position": 1,
                 ]
              ]
-            self.productVM?.postProduct(target: .collect, parameters: self.params)
+            
          case "Men":
             self.params = [
                "collect": [
@@ -276,7 +274,7 @@ extension ProductDetailsVC {
                    "position":1,
                ]
             ]
-            self.productVM?.postProduct(target: .collect, parameters: self.params)
+         
         case "Sale":
             self.params = [
                "collect": [
@@ -285,7 +283,7 @@ extension ProductDetailsVC {
                    "position":1,
                ]
             ]
-            self.productVM?.postProduct(target: .collect, parameters: self.params)
+            
          case "Women":
             self.params = [
                "collect": [
@@ -294,7 +292,7 @@ extension ProductDetailsVC {
                    "position":1,
                ]
             ]
-            self.productVM?.postProduct(target: .collect, parameters: self.params)
+           
          default:
              break
          }
@@ -339,20 +337,13 @@ extension ProductDetailsVC {
             "inventory_item_id": product?.variants?.first?.inventory_item_id ?? 0,
             "available": productAvaliableManually.text?.codingKey.intValue ?? 0,
         ]
-//        switch product_collection {
-//        case "All":
-//            productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
-//        case "Kids":
-//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.kids.id), parameters: parameters)
-//        case "Men":
-//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.men.id), parameters: parameters)
-//        case "Sale":
-//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.sale.id), parameters: parameters)
-//        case "Women":
-//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.women.id), parameters: parameters)
-//        default:
-//            showAlert(title: "Oh ..", msg: "Please try again", handler: { _ in })
-//        }
+        
+        self.categorized(productId: product?.id ?? 0)
+        
+        productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
+      
+        
+        
         if productAvaliableManually.text != "" {
             productVM?.postProduct(target: .setInventory, parameters: invParams)
         }
@@ -361,6 +352,7 @@ extension ProductDetailsVC {
             DispatchQueue.main.async {
                 switch self.productVM?.response?.keys.formatted() {
                 case "product":
+                    self.productVM?.putProduct(target: .collect, parameters: self.params)
                     self.showAlert(title: "Done", msg: "Edited Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     })
