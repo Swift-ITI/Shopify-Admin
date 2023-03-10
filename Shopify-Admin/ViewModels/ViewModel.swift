@@ -6,6 +6,7 @@
 //
 
 import Foundation
+//MARK: PRODUCT
 class ViewModel {
     var bindProductsToInventoryVC: (() -> Void) = {}
     var bindResponseToVC: (() -> Void) = {}
@@ -32,7 +33,9 @@ class ViewModel {
     }
 
     func postProduct(target: EndPoints, parameters: [String: Any]) {
-        NetworkServices.postMethod(url: target.path, parameters: parameters)
+        NetworkServices.postMethod(url: target.path, parameters: parameters) { response in
+            self.response = response
+        }
     }
 
     func putProduct(target: EndPoints, parameters: [String: Any]) {
@@ -42,6 +45,7 @@ class ViewModel {
     }
 }
 
+//MARK: PRICE_RULE
 class PriceRuleViewModel {
     var bindPriceRuleToCouponsVC: (() -> Void) = {}
     var priceRule: PriceRuleResult! {
@@ -57,6 +61,7 @@ class PriceRuleViewModel {
     }
 }
 
+//MARK: DISCOUNTS
 class DiscountCodesViewModel {
     var bindDiscountCodesToCouponsVC: (() -> Void) = {}
     var discountCodes: DiscountCodes? {
@@ -65,6 +70,11 @@ class DiscountCodesViewModel {
         }
     }
 
+    var response:[String:Any]? {
+        didSet{
+            bindDiscountCodesToCouponsVC()
+        }
+    }
     func fetchData(target: EndPoints) {
         NetworkServices.fetch(url: target.path) { result in
             self.discountCodes = result
@@ -72,7 +82,9 @@ class DiscountCodesViewModel {
     }
 
     func postCoupon(target: EndPoints, parameter: [String: Any]) {
-        NetworkServices.postMethod(url: target.path, parameters: parameter)
+        NetworkServices.postMethod(url: target.path, parameters: parameter) {response in
+            self.response = response
+        }
     }
 
     func deleteCode(target: EndPoints) {
@@ -80,6 +92,7 @@ class DiscountCodesViewModel {
     }
 }
 
+//MARK: CUSTOMERS
 class CustomerViewModel {
     var bindcustomersToCustomersVC: (() -> Void) = {}
     var customers: Customers! {

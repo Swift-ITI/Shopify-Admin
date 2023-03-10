@@ -8,12 +8,13 @@
 import Alamofire
 import Foundation
 
+// MARK: PROTOCOLS
 protocol GET_DATA {
     static func fetch<T: Decodable>(url: String?, compiletionHandler: @escaping (T?) -> Void)
 }
 
 protocol POST_DATA {
-    static func postMethod(url: String, parameters: [String: Any])
+    static func postMethod(url: String, parameters: [String: Any],completionHandler: @escaping ([String:Any]?)->Void)
 }
 
 protocol PUT_DATA {
@@ -43,7 +44,8 @@ class NetworkServices: GET_DATA {
 // MARK: POST
 
 extension NetworkServices: POST_DATA {
-    static func postMethod(url: String, parameters: [String: Any]) {
+    
+    static func postMethod(url: String, parameters: [String: Any], completionHandler: @escaping ([String : Any]?) -> Void) {
         guard let url = URL(string: url) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -70,7 +72,8 @@ extension NetworkServices: POST_DATA {
             do {
                 let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
 
-                print("SUCEES:\(response)")
+                print("POST :\(response)")
+                completionHandler(response as? [String:Any])
             } catch {
                 print(error)
             }

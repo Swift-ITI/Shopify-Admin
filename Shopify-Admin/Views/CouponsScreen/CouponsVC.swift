@@ -66,9 +66,6 @@ class CouponsVC: UIViewController {
                             "code": newCouponCode.text,
                         ],
                 ]
-            // discountCodes?.discount_codes
-//            let json = try! JSONSerialization.data(withJSONObject: parameters)
-//            let discCode = try! JSONDecoder().decode(DiscountCode.self, from: json)
             discountCodeViewModel?.postCoupon(target: .discountCodes(id: String(priceRule?.price_rules.first?.id ?? 0)), parameter: parameters)
             
             

@@ -36,6 +36,7 @@ class ProductDetailsVC: UIViewController {
             productDiscription.layer.borderWidth = 1.5
         }
     }
+
     @IBOutlet var productPrice: UITextField!
     @IBOutlet var productImgURL: UITextField!
     @IBOutlet var productCollection: UILabel!
@@ -143,7 +144,8 @@ class ProductDetailsVC: UIViewController {
         }
     }
 
-// MARK: DELETE
+    // MARK: DELETE
+
     @IBAction func deleteProduct(_ sender: Any) {
         switch flag {
         case 1:
@@ -163,14 +165,12 @@ class ProductDetailsVC: UIViewController {
         default: break
         }
     }
-
 }
 
 // MARK: POST
 
 extension ProductDetailsVC {
     func postData() {
-        
         let parameters: [String: Any] = [
             "product": [
                 "title": productName.text!,
@@ -181,9 +181,7 @@ extension ProductDetailsVC {
                     [
                         "price": productPrice.text!,
                         "sku": sku.text!,
-                        "inventory_management":"shopify",
-                        // "position": 1,
-                        //"inventory_quantity": productAvaliableQuantatiy.text!,
+                        "inventory_management": "shopify",
                         "option1": productSize.text!, // productSizes[0],
                         "option2": productColor.text!, // productColors[0],
                     ],
@@ -217,15 +215,51 @@ extension ProductDetailsVC {
         default:
             showAlert(title: "Oh ..))", msg: "Please try again", handler: { _ in })
         }
+        productVM?.bindResponseToVC = {
+            DispatchQueue.main.async {
+                switch self.productVM?.response?.keys.formatted() {
+                case "product":
+                    guard let product = self.productVM?.response?["product"] as? [String: Any],
+                          let variants = product["variants"] as? [[String: Any]],
+                          let invID = variants.first?["inventory_item_id"] as? Int else {
+                        print("Not Found")
+                        return
+                    }
+                    let invParams: [String: Any] = [
+                        "location_id": 78795800854,
+                        "inventory_item_id": invID,
+                        "available": self.productAvaliableManually.text?.codingKey.intValue ?? 0]
 
-        showAlert(title: "Done", msg: "Added Successfully", handler: { _ in
-            self.navigationController?.popViewController(animated: true)
-        })
+                    self.productVM?.postProduct(target: .setInventory, parameters: invParams)
+
+                    self.showAlert(title: "Done", msg: "Addedd Successfully", handler: { _ in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                // print(self.productVM?.response?["product"] ?? "")
+                case "errors":
+                    var errorMessages = ""
+
+                    if let errors = self.productVM?.response?["errors"] as? [String: Any] {
+                        for (field, messages) in errors {
+                            errorMessages += "\(field.capitalized): "
+                            if let messages = messages as? [String] {
+                                for message in messages {
+                                    errorMessages += " \(message)\n"
+                                }
+                            }
+                        }
+                    }
+                    self.showAlert(title: "Error", msg: errorMessages, handler: { _ in })
+                default:
+                    print("done")
+                }
+            }
+        }
     }
 
-// MARK: PUT
+    // MARK: PUT
+
     func putData() {
-        
         let parameters: [String: Any] = [
             "product": [
                 "title": productName.text!,
@@ -256,12 +290,11 @@ extension ProductDetailsVC {
                 "images": producImgs,
             ],
         ]
-        
-        let invParams: [String : Any] = [
-            "location_id":78795800854,
-            "inventory_item_id":product?.variants?.first?.inventory_item_id ?? 0,
-            "available":productAvaliableManually.text?.codingKey.intValue ?? 0
-            
+
+        let invParams: [String: Any] = [
+            "location_id": 78795800854,
+            "inventory_item_id": product?.variants?.first?.inventory_item_id ?? 0,
+            "available": productAvaliableManually.text?.codingKey.intValue ?? 0,
         ]
         switch product_collection {
         case "All":
@@ -277,7 +310,10 @@ extension ProductDetailsVC {
         default:
             showAlert(title: "Oh ..", msg: "Please try again", handler: { _ in })
         }
-        productVM?.postProduct(target: .setInventory, parameters: invParams)
+        if productAvaliableManually.text != "" {
+            productVM?.postProduct(target: .setInventory, parameters: invParams)
+        }
+
         productVM?.bindResponseToVC = {
             DispatchQueue.main.async {
                 switch self.productVM?.response?.keys.formatted() {
@@ -337,7 +373,7 @@ extension ProductDetailsVC {
             txtField.layer.borderWidth = 1.5
         }
     }
-    
+
     func showAlert(title: String, msg: String, handler: @escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
 
