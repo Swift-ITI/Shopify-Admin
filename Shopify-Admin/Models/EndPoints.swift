@@ -11,16 +11,17 @@ var BaseUrl = "https://29f36923749f191f42aa83c96e5786c5:shpat_9afaa4d7d43638b532
 enum EndPoints {
     case allProducts
     case productByID(id: Int)
-    case catigoriesProducts(id: String)
-    case shoes(id: String) // "SHOES"
-    case accessories(id: String) // "ACCESSORIES"
-    case tshirts(id: String) // "T-SHIRTS"
+    case catigoriesProducts(id: Int)
+    case shoes(id: Int) // "SHOES"
+    case accessories(id: Int) // "ACCESSORIES"
+    case tshirts(id: Int) // "T-SHIRTS"
     case priceRule
     case discountCodes(id: String)
     case deleteCodeByID(ruleID: Int, codeID: Int)
     case deleteProductByID(productID: Int)
     case customers
     case setInventory
+    case collect
     var path: String {
         switch self {
         case .allProducts:
@@ -49,6 +50,8 @@ enum EndPoints {
             return "\(BaseUrl)/products/\(id).json"
         case .setInventory:
             return "\(BaseUrl)/inventory_levels/set.json"
+        case .collect:
+            return "\(BaseUrl)/collects.json"
         }
     }
 }
@@ -60,18 +63,18 @@ enum CatigoryID {
     case sale
     case women
 
-    var id: String {
+    var id: Int {
         switch self {
         case .homePage:
-            return "436748681494"
+            return 436748681494
         case .kids:
-            return "436751368470"
+            return 436751368470
         case .men:
-            return "436751270166"
+            return 436751270166
         case .sale:
-            return "436751401238"
+            return 436751401238
         case .women:
-            return "436751335702"
+            return 436751335702
         }
     }
 }

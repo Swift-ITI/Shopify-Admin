@@ -17,6 +17,9 @@ class ProductDetailsVC: UIViewController {
     var productColors: [String] = []
     var status: String?
     var product_collection: String = ""
+    
+    var params : [String : Any] = [:]
+    var productId : Int = 0
 
     @IBOutlet var imgCollectionView: UICollectionView! { didSet {
         imgCollectionView.delegate = self
@@ -98,10 +101,10 @@ class ProductDetailsVC: UIViewController {
                 self.productCollection.text = action.title
             }
             pollDownProductCollection.menu = UIMenu(title: "", children: [
-                UIAction(title: "KID", handler: c),
-                UIAction(title: "MEN", handler: c),
-                UIAction(title: "SALE", handler: c),
-                UIAction(title: "WOMEN", handler: c)])
+                UIAction(title: "Kids", handler: c),
+                UIAction(title: "Men", handler: c),
+                UIAction(title: "Sale", handler: c),
+                UIAction(title: "Women", handler: c)])
             pollDownProductCollection.showsMenuAsPrimaryAction = true
 
         case pollDownProductType:
@@ -201,20 +204,8 @@ extension ProductDetailsVC {
                 "images": producImgs,
             ],
         ]
-        switch product_collection {
-        case "All":
-            productVM?.postProduct(target: .allProducts, parameters: parameters)
-        case "Kids":
-            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.kids.id), parameters: parameters)
-        case "Men":
-            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.men.id), parameters: parameters)
-        case "Sale":
-            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.sale.id), parameters: parameters)
-        case "Women":
-            productVM?.postProduct(target: .catigoriesProducts(id: CatigoryID.women.id), parameters: parameters)
-        default:
-            showAlert(title: "Oh ..))", msg: "Please try again", handler: { _ in })
-        }
+        productVM?.postProduct(target: .allProducts, parameters: parameters)
+     
         productVM?.bindResponseToVC = {
             DispatchQueue.main.async {
                 switch self.productVM?.response?.keys.formatted() {
@@ -231,6 +222,13 @@ extension ProductDetailsVC {
                         "available": self.productAvaliableManually.text?.codingKey.intValue ?? 0]
 
                     self.productVM?.postProduct(target: .setInventory, parameters: invParams)
+                    
+                    self.productId = product["id"] as? Int ?? 0
+                    print(self.productId)
+                    self.categorized()
+                    
+              
+                    
 
                     self.showAlert(title: "Done", msg: "Addedd Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
@@ -255,6 +253,50 @@ extension ProductDetailsVC {
                 }
             }
         }
+    }
+    
+    func categorized(){
+        
+        switch self.productCollection.text {
+         case "Kids":
+            self.params = [
+                "collect": [
+                    "collection_id": CatigoryID.kids.id,
+                    "product_id": productId,
+                    "position": 1,
+                ]
+             ]
+            self.productVM?.postProduct(target: .collect, parameters: self.params)
+         case "Men":
+            self.params = [
+               "collect": [
+                   "collection_id": CatigoryID.men.id,
+                   "product_id":productId,
+                   "position":1,
+               ]
+            ]
+            self.productVM?.postProduct(target: .collect, parameters: self.params)
+        case "Sale":
+            self.params = [
+               "collect": [
+                   "collection_id": CatigoryID.sale.id,
+                   "product_id":productId,
+                   "position":1,
+               ]
+            ]
+            self.productVM?.postProduct(target: .collect, parameters: self.params)
+         case "Women":
+            self.params = [
+               "collect": [
+                   "collection_id": CatigoryID.women.id,
+                   "product_id":productId,
+                   "position":1,
+               ]
+            ]
+            self.productVM?.postProduct(target: .collect, parameters: self.params)
+         default:
+             break
+         }
     }
 
     // MARK: PUT
@@ -296,20 +338,20 @@ extension ProductDetailsVC {
             "inventory_item_id": product?.variants?.first?.inventory_item_id ?? 0,
             "available": productAvaliableManually.text?.codingKey.intValue ?? 0,
         ]
-        switch product_collection {
-        case "All":
-            productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
-        case "Kids":
-            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.kids.id), parameters: parameters)
-        case "Men":
-            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.men.id), parameters: parameters)
-        case "Sale":
-            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.sale.id), parameters: parameters)
-        case "Women":
-            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.women.id), parameters: parameters)
-        default:
-            showAlert(title: "Oh ..", msg: "Please try again", handler: { _ in })
-        }
+//        switch product_collection {
+//        case "All":
+//            productVM?.putProduct(target: .productByID(id: product?.id ?? 0), parameters: parameters)
+//        case "Kids":
+//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.kids.id), parameters: parameters)
+//        case "Men":
+//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.men.id), parameters: parameters)
+//        case "Sale":
+//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.sale.id), parameters: parameters)
+//        case "Women":
+//            productVM?.putProduct(target: .catigoriesProducts(id: CatigoryID.women.id), parameters: parameters)
+//        default:
+//            showAlert(title: "Oh ..", msg: "Please try again", handler: { _ in })
+//        }
         if productAvaliableManually.text != "" {
             productVM?.postProduct(target: .setInventory, parameters: invParams)
         }
