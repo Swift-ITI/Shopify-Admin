@@ -22,7 +22,7 @@
         <!--LoginVC-->
         <scene sceneID="3lj-Rs-V3k">
             <objects>
-                <viewController id="cd1-j5-RfH" customClass="LoginVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="cd1-j5-RfH" customClass="LoginVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="alN-RH-ohf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,7 +143,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1f-ov-6qZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717.5572519083969" y="82.394366197183103"/>
+            <point key="canvasLocation" x="1711" y="-35"/>
         </scene>
         <!--StoreSB-->
         <scene sceneID="Yly-E2-DLf">

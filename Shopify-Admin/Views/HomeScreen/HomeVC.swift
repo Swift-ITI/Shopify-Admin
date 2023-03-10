@@ -20,31 +20,35 @@ class HomeVC: UIViewController {
     var viewModel = ViewModel()
     var products:[Product]?
     var searchProducts:[Product]?
+    var indicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.startAnimating()
         getProducts(target: .allProducts)
        
     }
     
     func getProducts(target: EndPoints){
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.startAnimating()
+        
         viewModel.fetchData(target: target)
         viewModel.bindProductsToInventoryVC = { () in
             self.renderProducts()
-            indicator.stopAnimating()
+            self.indicator.stopAnimating()
         }
         inventoryCV.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
-//        viewModel.bindProductsToInventoryVC = { () in
-//            self.renderProducts()
-//            self.indicator.stopAnimating()
-//        }
-        inventoryCV.reloadData()
+        indicator.startAnimating()
+        viewModel.fetchData(target: .allProducts)
+        viewModel.bindProductsToInventoryVC = { () in
+            self.renderProducts()
+            self.indicator.stopAnimating()
+        }
+        //inventoryCV.reloadData()
     }
     
     @IBAction func selsectCatigorizedProduct(_ sender: Any) {
@@ -88,7 +92,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         cell.productImage.kf.setImage(with: URL(string: tmp?.image?.src ?? ""))
         cell.nameLabel.text = tmp?.title
         cell.typeLabel.text = tmp?.product_type
-        cell.qtnLabel.text = tmp?.variants?.first?.inventory_quantity.formatted()
+        cell.qtnLabel.text = tmp?.variants?.first?.inventory_quantity?.formatted()
         cell.skuLabel.text = "SKU: \(tmp?.variants?.first?.sku ?? "")"
         return cell
     }

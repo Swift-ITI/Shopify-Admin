@@ -26,18 +26,19 @@ class Product: Decodable {
 }
 
 class Variant: Decodable {
-    var id: Int
-    var product_id: Int
-    var title: String
-    var price: String
-    var sku: String
+    var id: Int?
+    var product_id: Int?
+    var title: String?
+    var price: String?
+    var sku: String?
     var position: Int?
     var fulfillment_service: String?
     var option1: String?
     var option2: String?
     var option3: String?
-    var taxable: Bool
-    var inventory_quantity: Int
+    var taxable: Bool?
+    var inventory_quantity: Int?
+    var inventory_item_id: Int?
 }
 
 class Option: Decodable {
@@ -48,9 +49,9 @@ class Option: Decodable {
     var values: [String]?
 }
 
-class Image : Decodable {
-    var id : Int?
-    var product_id : Int?
-    var position : Int?
-    var src : String
+class Image: Decodable {
+    var id: Int?
+    var product_id: Int?
+    var position: Int?
+    var src: String
 }

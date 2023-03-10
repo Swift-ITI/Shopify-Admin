@@ -390,7 +390,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkA-YY-pLF">
-                                        <rect key="frame" x="336.66666666666669" y="8" width="48.333333333333314" height="34.333333333333336"/>
+                                        <rect key="frame" x="336.66666666666669" y="16.000000000000004" width="48.333333333333314" height="34.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KkA-YY-pLF" secondAttribute="height" multiplier="24:17" id="NI8-t2-jig"/>
                                         </constraints>
@@ -471,7 +471,7 @@
                                     <constraint firstItem="eja-Tg-LGN" firstAttribute="width" secondItem="hXD-xR-ms2" secondAttribute="width" multiplier="0.918575" id="2Ad-dt-oPG"/>
                                     <constraint firstItem="jIo-SV-WY7" firstAttribute="top" secondItem="6AI-b3-GBj" secondAttribute="bottom" constant="8" symbolic="YES" id="2E2-P8-eq2"/>
                                     <constraint firstItem="HPM-P0-mfF" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="2T1-qb-7SY"/>
-                                    <constraint firstItem="KkA-YY-pLF" firstAttribute="top" secondItem="hXD-xR-ms2" secondAttribute="top" constant="8" id="2if-wh-aRm"/>
+                                    <constraint firstItem="KkA-YY-pLF" firstAttribute="top" secondItem="hXD-xR-ms2" secondAttribute="top" constant="16" id="2if-wh-aRm"/>
                                     <constraint firstItem="klC-sq-HeU" firstAttribute="top" secondItem="hXD-xR-ms2" secondAttribute="top" constant="16" id="2nQ-hm-ggb"/>
                                     <constraint firstItem="BCs-R9-wVf" firstAttribute="leading" secondItem="hXD-xR-ms2" secondAttribute="leading" constant="16" id="4Lw-29-Wrc"/>
                                     <constraint firstAttribute="trailing" secondItem="BCs-R9-wVf" secondAttribute="trailing" constant="16" id="602-0X-FDh"/>
@@ -544,6 +544,7 @@
                     </view>
                     <size key="freeformSize" width="393" height="1500"/>
                     <connections>
+                        <outlet property="deleteBtn" destination="KkA-YY-pLF" id="P5C-I6-V0K"/>
                         <outlet property="imgCollectionView" destination="NWQ-63-SZl" id="r17-64-ef4"/>
                         <outlet property="pollDownProductCollection" destination="RKB-IR-Cmf" id="TB7-xy-5Vq"/>
                         <outlet property="pollDownProductType" destination="PHW-s9-bta" id="dHI-92-9uh"/>
