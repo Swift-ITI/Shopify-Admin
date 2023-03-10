@@ -126,6 +126,7 @@ class ProductDetailsVC: UIViewController {
         if productImgURL.text != "" {
             producImgs.append(["src": productImgURL.text ?? "NoImg"])
             imgCollectionView.reloadData()
+            productImgURL.text = ""
             // reload collction view data
         } else {
             showAlert(title: "Failed", msg: "Add Image") { _ in }
