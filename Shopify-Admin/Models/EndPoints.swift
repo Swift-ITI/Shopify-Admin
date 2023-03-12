@@ -22,6 +22,7 @@ enum EndPoints {
     case customers
     case setInventory
     case collect
+    case removeFromCollect(id: Int)
     var path: String {
         switch self {
         case .allProducts:
@@ -52,6 +53,8 @@ enum EndPoints {
             return "\(BaseUrl)/inventory_levels/set.json"
         case .collect:
             return "\(BaseUrl)/collects.json"
+        case let .removeFromCollect(id: id):
+            return "\(BaseUrl)/collects/\(id).json"
         }
     }
 }

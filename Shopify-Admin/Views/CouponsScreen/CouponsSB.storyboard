@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-mr-TB1">
-                                <rect key="frame" x="16" y="111.00000000000001" width="361" height="145.33333333333337"/>
+                                <rect key="frame" x="16" y="119.00000000000001" width="361" height="145.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="76" translatesAutoresizingMaskIntoConstraints="NO" id="a7O-oQ-L3a">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="27.333333333333332"/>
@@ -99,8 +99,8 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Discount codes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeB-Iw-wdD">
-                                <rect key="frame" x="16.000000000000014" y="425.33333333333331" width="229.33333333333337" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <rect key="frame" x="16" y="428.66666666666669" width="203" height="25.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -113,7 +113,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqU-He-wMK">
-                                <rect key="frame" x="2" y="287.33333333333331" width="393" height="106"/>
+                                <rect key="frame" x="2" y="290.66666666666669" width="393" height="106"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-kS-hSh">
                                         <rect key="frame" x="20" y="20" width="176" height="28"/>
@@ -140,22 +140,30 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usage Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fa-dH-Pzy">
+                                <rect key="frame" x="257.33333333333331" y="428.66666666666669" width="119.66666666666669" height="25.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0Fa-dH-Pzy" secondAttribute="trailing" constant="16" id="4zZ-vF-UFA"/>
                             <constraint firstAttribute="bottom" secondItem="O3t-SF-i3i" secondAttribute="bottom" id="7To-ma-C2L"/>
                             <constraint firstItem="SeB-Iw-wdD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="7Wm-mE-tZ7"/>
                             <constraint firstItem="cqU-He-wMK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="2" id="B4d-PC-3Cp"/>
                             <constraint firstItem="O3t-SF-i3i" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.462441" id="GJM-zX-Xve"/>
                             <constraint firstItem="O3t-SF-i3i" firstAttribute="top" secondItem="SeB-Iw-wdD" secondAttribute="bottom" constant="4" id="LhO-W5-W3s"/>
-                            <constraint firstItem="Lkj-mr-TB1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="N5a-OB-ncj"/>
+                            <constraint firstItem="Lkj-mr-TB1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="N5a-OB-ncj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="O3t-SF-i3i" secondAttribute="trailing" constant="16" id="QOD-vO-jsP"/>
                             <constraint firstItem="O3t-SF-i3i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Xsm-bB-sDn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lkj-mr-TB1" secondAttribute="trailing" constant="16" id="aWd-JF-DCd"/>
                             <constraint firstItem="cqU-He-wMK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="2" id="bZA-o5-7LF"/>
                             <constraint firstItem="SeB-Iw-wdD" firstAttribute="top" secondItem="cqU-He-wMK" secondAttribute="bottom" constant="32" id="eZa-ND-Fiq"/>
                             <constraint firstItem="Lkj-mr-TB1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="fGr-8L-qwk"/>
+                            <constraint firstItem="0Fa-dH-Pzy" firstAttribute="top" secondItem="cqU-He-wMK" secondAttribute="bottom" constant="32" id="wR7-UC-0Ec"/>
                             <constraint firstItem="cqU-He-wMK" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.124413" id="ynN-h2-kxm"/>
                         </constraints>
                     </view>

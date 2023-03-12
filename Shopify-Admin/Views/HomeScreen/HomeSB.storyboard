@@ -19,22 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-jD-8L9">
-                                <rect key="frame" x="0.0" y="103" width="338" height="56"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="AXW-nU-R9W"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDY-5I-0W1">
-                                <rect key="frame" x="338" y="103" width="51" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="BDY-5I-0W1" secondAttribute="height" multiplier="1:1" id="n0C-rs-mIh"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease" catalog="system">
-                                    <color key="baseForegroundColor" name="SecondaryColor"/>
-                                </buttonConfiguration>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtC-T8-30r">
                                 <rect key="frame" x="16" y="167" width="101" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -55,7 +45,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRG-rS-e3B">
-                                <rect key="frame" x="338" y="166" width="47" height="35"/>
+                                <rect key="frame" x="338" y="167" width="47" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kRG-rS-e3B" secondAttribute="height" multiplier="47:35" id="Xjn-gF-U41"/>
                                 </constraints>
@@ -82,21 +72,18 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kRG-rS-e3B" firstAttribute="top" secondItem="BDY-5I-0W1" secondAttribute="bottom" constant="12" id="1ui-ch-ndF"/>
                             <constraint firstItem="PQR-jD-8L9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="4jd-JY-2eC"/>
                             <constraint firstItem="PQR-jD-8L9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6xz-EX-Ac8"/>
-                            <constraint firstItem="BDY-5I-0W1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="EBP-1E-zBt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kay-J1-jYb" secondAttribute="trailing" constant="8" id="FEz-uJ-dYx"/>
-                            <constraint firstItem="BDY-5I-0W1" firstAttribute="leading" secondItem="PQR-jD-8L9" secondAttribute="trailing" id="I9O-5c-VXb"/>
                             <constraint firstItem="i4y-ev-eFW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Lvv-oh-WLa"/>
+                            <constraint firstItem="kRG-rS-e3B" firstAttribute="top" secondItem="PQR-jD-8L9" secondAttribute="bottom" constant="8" id="OZC-aV-S2g"/>
                             <constraint firstItem="i4y-ev-eFW" firstAttribute="top" secondItem="QtC-T8-30r" secondAttribute="bottom" constant="8" id="WBa-fv-IKr"/>
                             <constraint firstItem="kay-J1-jYb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="WWW-kY-FWH"/>
                             <constraint firstItem="QtC-T8-30r" firstAttribute="top" secondItem="PQR-jD-8L9" secondAttribute="bottom" constant="8" id="Yka-FI-lET"/>
                             <constraint firstItem="QtC-T8-30r" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="bHJ-6z-Mlh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PQR-jD-8L9" secondAttribute="trailing" id="eTB-Li-6p7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kay-J1-jYb" secondAttribute="bottom" id="ejM-R4-dHy"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BDY-5I-0W1" secondAttribute="trailing" constant="4" id="iFb-2q-uec"/>
                             <constraint firstItem="kay-J1-jYb" firstAttribute="top" secondItem="i4y-ev-eFW" secondAttribute="bottom" constant="16" id="lRa-vh-Hmq"/>
-                            <constraint firstItem="BDY-5I-0W1" firstAttribute="leading" secondItem="PQR-jD-8L9" secondAttribute="trailing" id="lpQ-ju-F9W"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i4y-ev-eFW" secondAttribute="trailing" constant="16" id="plq-k7-Qhv"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kRG-rS-e3B" secondAttribute="trailing" constant="8" id="tKB-p1-Wsc"/>
                         </constraints>
@@ -616,7 +603,6 @@
     </scenes>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="AccentColor">

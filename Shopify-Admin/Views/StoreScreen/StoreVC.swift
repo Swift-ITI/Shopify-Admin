@@ -8,23 +8,17 @@
 import UIKit
 
 class StoreVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     
     @IBAction func showCustomers(_ sender: Any) {
         let CustomerObj : CustomersVC = self.storyboard?.instantiateViewController(withIdentifier: "customers") as! CustomersVC
         self.navigationController?.pushViewController(CustomerObj, animated: true)
-    }
-    
-    @IBAction func showAnalytics(_ sender: Any) {
-    }
-    
-    @IBAction func logOut(_ sender: Any) {
     }
 }

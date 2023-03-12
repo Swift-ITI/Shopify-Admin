@@ -106,7 +106,7 @@ extension CouponsVC: UITableViewDataSource {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this code?", preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
                 indicator.startAnimating()
                 self.discountCodeViewModel?.deleteCode(target: .deleteCodeByID(ruleID: self.priceRule?.price_rules.first?.id ?? 0, codeID: self.discountCodes[indexPath.row].id ?? 0 ))
                 

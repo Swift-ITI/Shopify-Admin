@@ -352,7 +352,8 @@ extension ProductDetailsVC {
             DispatchQueue.main.async {
                 switch self.productVM?.response?.keys.formatted() {
                 case "product":
-                    self.productVM?.putProduct(target: .collect, parameters: self.params)
+                    
+                    self.productVM?.postProduct(target: .collect, parameters: self.params)
                     self.showAlert(title: "Done", msg: "Edited Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     })
