@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftyGif
 class LoginVC: UIViewController {
     @IBOutlet var pwTxtField: UITextField! {
         didSet {
@@ -18,6 +18,8 @@ class LoginVC: UIViewController {
 
     @IBOutlet var loginImage: UIImageView! {
         didSet {
+//            let gif = try! UIImage(gifName: "cart")
+//            loginImage.setGifImage(gif,loopCount: -1)
             loginImage.image = UIImage(named: "Splash")
         }
     }

@@ -20,6 +20,8 @@
 		4DF27A5AF26F7F259F908D5D /* Pods_Shopify_AdminTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4936CA249C160B96DBD1B6BA /* Pods_Shopify_AdminTests.framework */; };
 		67F59D557FB4BB25565FA166 /* Pods_Shopify_Admin_Shopify_AdminUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4BFE27C9DE273A4BF636D3 /* Pods_Shopify_Admin_Shopify_AdminUITests.framework */; };
 		C554F7241BFFF50DE19426F6 /* Pods_Shopify_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF47D43D36A2BBE6BDC5BDD /* Pods_Shopify_Admin.framework */; };
+		DE808DA629BD61DC0005B84A /* cart.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE808DA529BD61DC0005B84A /* cart.gif */; };
+		DE808DA829BD64B80005B84A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = DE808DA729BD64B80005B84A /* loading.gif */; };
 		DEA9CD7829B06E3A00672E37 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA9CD7729B06E3A00672E37 /* LoginVC.swift */; };
 		DEA9CD7C29B0858300672E37 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA9CD7B29B0858200672E37 /* EndPoints.swift */; };
 		DECA31BE29AC10FE00E27CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA31BD29AC10FE00E27CB2 /* AppDelegate.swift */; };
@@ -82,6 +84,8 @@
 		9C02B6EA84FDE0456BEE7B0B /* Pods-Shopify-AdminTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-AdminTests.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-AdminTests/Pods-Shopify-AdminTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D2E44E86B67DE42E010C1E75 /* Pods-Shopify-AdminTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-AdminTests.release.xcconfig"; path = "Target Support Files/Pods-Shopify-AdminTests/Pods-Shopify-AdminTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6B525A6DE576A61A40B8CC /* Pods-Shopify-Admin-Shopify-AdminUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Admin-Shopify-AdminUITests.release.xcconfig"; path = "Target Support Files/Pods-Shopify-Admin-Shopify-AdminUITests/Pods-Shopify-Admin-Shopify-AdminUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE808DA529BD61DC0005B84A /* cart.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cart.gif; sourceTree = "<group>"; };
+		DE808DA729BD64B80005B84A /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		DEA9CD7729B06E3A00672E37 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DEA9CD7B29B0858200672E37 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		DECA31BA29AC10FE00E27CB2 /* Shopify-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				DECA31C929AC110200E27CB2 /* Assets.xcassets */,
+				DE808DA529BD61DC0005B84A /* cart.gif */,
+				DE808DA729BD64B80005B84A /* loading.gif */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -487,9 +493,11 @@
 				DECA31CD29AC110200E27CB2 /* LaunchScreen.storyboard in Resources */,
 				DECA322629AC170000E27CB2 /* InventoryCVCell.xib in Resources */,
 				DECA320D29AC155300E27CB2 /* CouponsSB.storyboard in Resources */,
+				DE808DA629BD61DC0005B84A /* cart.gif in Resources */,
 				DECA31CA29AC110200E27CB2 /* Assets.xcassets in Resources */,
 				DECA322929AC17A900E27CB2 /* HomeSB.storyboard in Resources */,
 				DECA320929AC153100E27CB2 /* StoreSB.storyboard in Resources */,
+				DE808DA829BD64B80005B84A /* loading.gif in Resources */,
 				DECA31C529AC10FE00E27CB2 /* Main.storyboard in Resources */,
 				3D9D3A9C29B3DCA600DB64CD /* CouponCV.xib in Resources */,
 				DECA322229AC16E600E27CB2 /* CustomersCVCell.xib in Resources */,

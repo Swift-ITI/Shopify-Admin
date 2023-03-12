@@ -52,10 +52,11 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet var productAvaliableManually: UITextField!
     @IBOutlet var sku: UITextField!
     @IBOutlet var deleteBtn: UIButton!
-
+    var indicator = UIActivityIndicatorView(style: .large)
     override func viewDidLoad() {
         super.viewDidLoad()
         renderTxtFields(txtFields: [productName, productPrice, productVendor, productImgURL, productSize, productColor, productAvaliableManually, sku])
+        
         switch flag {
         case 1:
             deleteBtn.isHidden = true
@@ -205,6 +206,9 @@ extension ProductDetailsVC {
                 "images": producImgs,
             ],
         ]
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.startAnimating()
         productVM?.postProduct(target: .allProducts, parameters: parameters)
      
         productVM?.bindResponseToVC = {
@@ -228,7 +232,7 @@ extension ProductDetailsVC {
                     print(self.productId)
                     self.categorized(productId: self.productId)
                     self.productVM?.postProduct(target: .collect, parameters: self.params)
-                    
+                    self.indicator.stopAnimating()
                     self.showAlert(title: "Done", msg: "Addedd Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     })
@@ -301,6 +305,9 @@ extension ProductDetailsVC {
     // MARK: PUT
 
     func putData() {
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.startAnimating()
         let parameters: [String: Any] = [
             "product": [
                 "title": productName.text!,
@@ -354,6 +361,7 @@ extension ProductDetailsVC {
                 case "product":
                     
                     self.productVM?.postProduct(target: .collect, parameters: self.params)
+                        self.indicator.stopAnimating()
                     self.showAlert(title: "Done", msg: "Edited Successfully", handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     })
