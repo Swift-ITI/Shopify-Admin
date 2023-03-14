@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="970.2290076335878" y="-34.507042253521128"/>
         </scene>
-        <!--CustomersVC-->
+        <!--Customers-->
         <scene sceneID="nxi-4E-nII">
             <objects>
-                <viewController storyboardIdentifier="customers" id="a1l-GR-lHw" customClass="CustomersVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="customers" title="Customers" id="a1l-GR-lHw" customClass="CustomersVC" customModule="Shopify_Admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HHp-g1-Vub">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

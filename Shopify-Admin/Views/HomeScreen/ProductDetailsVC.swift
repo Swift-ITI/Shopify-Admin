@@ -29,7 +29,6 @@ class ProductDetailsVC: UIViewController {
         imgCollectionView.layer.cornerRadius = 20
 
     }}
-    @IBOutlet var productVendor: UITextField!
     @IBOutlet var save_editBtn: UIButton!
     @IBOutlet var productName: UITextField!
     @IBOutlet var productDiscription: UITextView! {
@@ -55,13 +54,15 @@ class ProductDetailsVC: UIViewController {
     var indicator = UIActivityIndicatorView(style: .large)
     override func viewDidLoad() {
         super.viewDidLoad()
-        renderTxtFields(txtFields: [productName, productPrice, productVendor, productImgURL, productSize, productColor, productAvaliableManually, sku])
+        renderTxtFields(txtFields: [productName, productPrice, productImgURL, productSize, productColor, productAvaliableManually, sku])
         
         switch flag {
         case 1:
             deleteBtn.isHidden = true
             save_editBtn.setTitle("Save", for: .normal)
         case 2:
+                sku.isEnabled = false
+                productDiscription.isEditable = false
             save_editBtn.setTitle("Edit", for: .normal)
         default:
             break
@@ -89,8 +90,6 @@ class ProductDetailsVC: UIViewController {
         productCollection.text = product_collection
         sku.text = product?.variants?[0].sku
         productType.text = product?.product_type
-        productVendor.text = product?.vendor
-
         choose(sender: pollDownProductCollection)
         choose(sender: pollDownProductType)
     }
@@ -180,7 +179,6 @@ extension ProductDetailsVC {
             "product": [
                 "title": productName.text!,
                 "body_html": productDiscription.text!,
-                "vendor": productVendor.text!,
                 "product_type": productType.text!,
                 "variants": [
                     [
@@ -312,7 +310,6 @@ extension ProductDetailsVC {
             "product": [
                 "title": productName.text!,
                 "body_html": productDiscription.text!,
-                "vendor": productVendor.text!,
                 "product_type": productType.text!,
                 "variants": [
                     [
@@ -412,6 +409,7 @@ extension ProductDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource
 extension ProductDetailsVC {
     func renderTxtFields(txtFields: [UITextField]) {
         for txtField in txtFields {
+            txtField.delegate=self
             txtField.layer.cornerRadius = 10
             txtField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
             txtField.layer.borderWidth = 1.5
@@ -426,5 +424,14 @@ extension ProductDetailsVC {
         }))
 
         present(alert, animated: true, completion: nil)
+    }
+}
+extension ProductDetailsVC:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
     }
 }

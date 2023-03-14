@@ -7,12 +7,16 @@
 
 import UIKit
 
-class CouponsVC: UIViewController {
+class CouponsVC: UIViewController, UITextFieldDelegate {
     @IBOutlet var priceRuleId: UILabel!
     @IBOutlet var priceRuleValue: UILabel!
     @IBOutlet var priceRuleAvaialability: UILabel!
     @IBOutlet var priceRuleTargetType: UILabel!
-    @IBOutlet var newCouponCode: UITextField!
+    @IBOutlet var newCouponCode: UITextField!{
+        didSet{
+            newCouponCode.delegate = self
+        }
+    }
     @IBOutlet var discountCodesTableView: UITableView! {
         didSet {
             discountCodesTableView.delegate = self
@@ -38,7 +42,7 @@ class CouponsVC: UIViewController {
                 self.priceRule = self.priceRuleViewModel?.priceRule
 
                 self.priceRuleId.text = String(self.priceRule?.price_rules.first?.id ?? 0)
-                self.priceRuleValue.text = self.priceRule?.price_rules.first?.value
+                self.priceRuleValue.text = "\(self.priceRule?.price_rules.first?.value ?? "") %"
                 self.priceRuleAvaialability.text = "\(self.priceRule?.price_rules.first?.customer_selection ?? "No") customers"
                 self.priceRuleTargetType.text = self.priceRule?.price_rules.first?.target_type
 
@@ -135,7 +139,7 @@ extension CouponsVC: UITableViewDataSource {
         let cell: CouponCV = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponCV
 //        cell.discountCode.text = arrOfDiscountCodes[indexPath.row]
         cell.discountCode.text = discountCodes[indexPath.row].code
-       cell.discountUsage.text = String(discountCodes[indexPath.row].usage_count ?? 0)
+       //cell.discountUsage.text = String(discountCodes[indexPath.row].usage_count ?? 0)
 
         return cell
     }
@@ -148,5 +152,12 @@ extension CouponsVC: UITableViewDataSource {
         }))
 
         present(alert, animated: true, completion: nil)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
     }
 }

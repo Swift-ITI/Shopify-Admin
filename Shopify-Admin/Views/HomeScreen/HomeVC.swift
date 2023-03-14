@@ -11,7 +11,11 @@ class HomeVC: UIViewController {
 
     
     @IBOutlet weak var catigorizedProducts: UISegmentedControl!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!{
+        didSet{
+            searchBar.delegate = self
+        }
+    }
     @IBOutlet var inventoryCV: UICollectionView! {
         didSet {
             renderCVs(CV: inventoryCV, cellFile: "InventoryCVCell", cellID: "inventoryCell")
@@ -43,11 +47,13 @@ class HomeVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         indicator.startAnimating()
+        catigorizedProducts.selectedSegmentIndex = 0
         viewModel.fetchData(target: .allProducts)
         viewModel.bindProductsToInventoryVC = { () in
             self.renderProducts()
             self.indicator.stopAnimating()
         }
+        
         //inventoryCV.reloadData()
     }
     
@@ -135,7 +141,7 @@ extension HomeVC {
 }
 
 
-extension HomeVC :UISearchBarDelegate {
+extension HomeVC :UISearchBarDelegate,UITextFieldDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         products = []
         if searchText == ""{
@@ -148,4 +154,16 @@ extension HomeVC :UISearchBarDelegate {
         }
         self.inventoryCV.reloadData()
     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBar.endEditing(true)
+
+       return true
+    }
 }
+

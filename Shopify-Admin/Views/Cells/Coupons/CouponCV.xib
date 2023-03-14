@@ -16,30 +16,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0g-fq-kT5">
-                        <rect key="frame" x="252" y="11" width="52" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htx-0Q-Ijv">
-                        <rect key="frame" x="16" y="11" width="119" height="22"/>
+                        <rect key="frame" x="100.66666666666669" y="11" width="119" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="htx-0Q-Ijv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DDc-sw-shr"/>
-                    <constraint firstItem="y0g-fq-kT5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hxh-5c-kK9"/>
+                    <constraint firstItem="htx-0Q-Ijv" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0ag-h4-540"/>
                     <constraint firstItem="htx-0Q-Ijv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ute-gf-INz"/>
-                    <constraint firstAttribute="trailing" secondItem="y0g-fq-kT5" secondAttribute="trailing" constant="16" id="V7k-du-qBD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="discountCode" destination="htx-0Q-Ijv" id="Yfa-Mt-5is"/>
-                <outlet property="discountUsage" destination="y0g-fq-kT5" id="Nji-m6-LMp"/>
             </connections>
             <point key="canvasLocation" x="131" y="-11"/>
         </tableViewCell>

@@ -5,11 +5,12 @@
 //  Created by Adham Samer on 02/03/2023.
 //
 
-import UIKit
 import SwiftyGif
+import UIKit
 class LoginVC: UIViewController {
     @IBOutlet var pwTxtField: UITextField! {
         didSet {
+            pwTxtField.delegate = self
             pwTxtField.layer.cornerRadius = 10
             pwTxtField.layer.borderColor = UIColor(named: "SecondaryColor")?.cgColor
             pwTxtField.layer.borderWidth = 2
@@ -44,3 +45,15 @@ class LoginVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        pwTxtField.endEditing(true)
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+}
+
